@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:showIn="navigation_view">
+
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/first_activity"
+            android:icon="@drawable/ic_menu_slideshow"
+            android:title="First Activity" />
+        <item
+            android:id="@+id/lifecycle_activity"
+            android:icon="@drawable/ic_menu_slideshow"
+            android:title="Lifecycle Activity Test" />
+        <item
+            android:id="@+id/restaurant_activity"
+            android:icon="@drawable/ic_menu_slideshow"
+            android:title="Restaurant Randomizer" />
+        <!--
+        <item
+            android:id="@+id/nav_camera"
+            android:icon="@drawable/ic_menu_camera"
+            android:title="Import" />
+        <item
+            android:id="@+id/nav_gallery"
+            android:icon="@drawable/ic_menu_gallery"
+            android:title="Gallery" />
+        <item
+            android:id="@+id/nav_slideshow"
+            android:icon="@drawable/ic_menu_slideshow"
+            android:title="Slideshow" />
+        <item
+            android:id="@+id/nav_manage"
+            android:icon="@drawable/ic_menu_manage"
+            android:title="Tools" />
+        -->
+    </group>
+
+
+    <item android:title="Miscellaneous :)">
+        <menu>
+            <item
+                android:id="@+id/birthday_card"
+                android:icon="@drawable/cake_logo"
+                android:title="Birthday Card" />
+
+            <item
+                android:id="@+id/eat_cookie"
+                android:icon="@drawable/cookie_logo"
+                android:title="Eat Cookie" />
+
+            <item
+                android:id="@+id/court_counter"
+                android:icon="@drawable/cookie_logo"
+                android:title="Court Counter" />
+
+            <item
+                android:id="@+id/just_java"
+                android:icon="@drawable/java_logo"
+                android:title="Just Java" />
+            <item
+                android:id="@+id/chopin_time"
+                android:icon="@drawable/ic_menu_slideshow"
+                android:title="Chopin Time" />
+            <!--
+            <item
+                android:id="@+id/nav_share"
+                android:icon="@drawable/ic_menu_share"
+                android:title="Share" />
+            <item
+                android:id="@+id/nav_send"
+                android:icon="@drawable/ic_menu_send"
+                android:title="Send" />
+            -->
+        </menu>
+    </item>
+
+
+</menu>

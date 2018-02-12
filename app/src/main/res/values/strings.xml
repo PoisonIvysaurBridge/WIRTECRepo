@@ -1,0 +1,20 @@
+<resources>
+    <string name="app_name">WIR-TEC Repo</string>
+
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+
+    <string name="action_settings">Settings</string>
+
+    <!-- Header text for the list of toppings [CHAR LIMIT=20] -->
+    <string name="toppings">Toppings</string>
+
+    <!-- Thank you message for the order summary. [CHAR LIMIT=NONE] -->
+    <string name="thank_you">Thank You!</string>
+
+    <string name="action_add_favourite">Add to Favourites</string>
+
+    <string name="my_cart">My Cart</string>
+    <string name="delete">DELETE</string>
+    <string name="edit">EDIT</string>
+</resources>
