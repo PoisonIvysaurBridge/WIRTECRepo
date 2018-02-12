@@ -18,6 +18,7 @@ public class AddRestaurant extends AppCompatActivity {
                      editDesc,
                      editWeight;
     private Integer position = -1;
+    private boolean isCanceled = false;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -55,6 +56,7 @@ public class AddRestaurant extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 //Toast.makeText(AddRestaurant.this, "Cancel", Toast.LENGTH_SHORT).show();
+                isCanceled = true;
                 finish();
             }
         });
@@ -63,18 +65,21 @@ public class AddRestaurant extends AppCompatActivity {
     @Override
     public void finish() {
         Intent intent = new Intent();
-        // Make a bundle containing the current restaurant details
-        Bundle bundle = new Bundle();
-        bundle.putString("restoName", editName.getText().toString());
-        bundle.putString("restoDesc", editDesc.getText().toString());
-        bundle.putDouble("restoWeight", Double.parseDouble(editWeight.getText().toString()));
-        if(position != -1){
-            bundle.putInt("position", position);
+
+        if(isCanceled == false){    // if not canceled, put in values
+            // Make a bundle containing the current restaurant details
+            Bundle bundle = new Bundle();
+            bundle.putString("restoName", editName.getText().toString());
+            bundle.putString("restoDesc", editDesc.getText().toString());
+            bundle.putDouble("restoWeight", Double.parseDouble(editWeight.getText().toString()));
+            if(position != -1){
+                bundle.putInt("position", position);
+            }
+
+            intent.putExtras(bundle);
         }
 
-        intent.putExtras(bundle);
-        // TODO replace with real value
-        setResult(RESULT_OK, intent);
+        setResult(RESULT_CANCELED, intent);
         super.finish();
     }
 }
