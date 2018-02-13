@@ -17,6 +17,7 @@ import android.widget.Toast;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+import java.util.Random;
 
 public class RestaurantActivity extends AppCompatActivity implements RecyclerItemTouchHelper.RecyclerItemTouchHelperListener {
     /** The request code for the add new restaurant intent */   static final int ADD_RESTO_REQUEST = 0;
@@ -79,9 +80,13 @@ public class RestaurantActivity extends AppCompatActivity implements RecyclerIte
         surprise.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Collections.shuffle(restaurants);
-                mAdapter.notifyDataSetChanged();
-                Snackbar.make(view, "LET'S EAT AT... " + restaurants.get(0).getmRestaurantName() + "!!!", Snackbar.LENGTH_LONG)
+                // EQUAL RANDOMNESS
+                //Collections.shuffle(restaurants);
+                //mAdapter.notifyDataSetChanged(); enable this to view the shuffling animation
+
+                // WEIGHTED RANDOMNESS
+                Restaurant chosenOne = doWeightedRandomness();
+                Snackbar.make(view, "LET'S EAT AT... " + chosenOne.getmRestaurantName() + "!!!", Snackbar.LENGTH_LONG)
                         .setAction("Action", null).show();
             }
         });
@@ -112,6 +117,20 @@ public class RestaurantActivity extends AppCompatActivity implements RecyclerIte
         }));
     }
 
+    public Restaurant doWeightedRandomness(){
+        ArrayList<Restaurant> weightedList = new ArrayList<>();
+
+        for (int i = 0; i < this.restaurants.size(); i++) {
+            double weight = this.restaurants.get(i).getmRestaurantWeight();
+
+            for(int j = 0; j < weight; j++) {
+                weightedList.add(this.restaurants.get(i));
+            }
+        }
+
+        int randomNum = new Random().nextInt(weightedList.size());
+        return weightedList.get(randomNum);
+    }
     /**
      * This method gets the sub activity results
      * @param requestCode is the request code sent to the new intent (add or edit restaurant codes)
