@@ -117,19 +117,31 @@ public class RestaurantActivity extends AppCompatActivity implements RecyclerIte
         }));
     }
 
+    /**
+     * This method generates a weighted list of restaurants, based on the given weight of a restaurant.
+     * In the weighted list, there will repeated restaurant objects to give the weighted probability
+     * that a higher weighted restaurant will have a higher probability of being picked.
+     *
+     * @return Restaurant object
+     */
     public Restaurant doWeightedRandomness(){
-        ArrayList<Restaurant> weightedList = new ArrayList<>();
+        // this is the weighted list
+        List<Restaurant> weightedRestos = new ArrayList<>();
 
-        for (int i = 0; i < this.restaurants.size(); i++) {
-            double weight = this.restaurants.get(i).getmRestaurantWeight();
+        // loop around all the restaurants in the restaurants list
+        for (int i = 0; i < restaurants.size(); i++) {
+            // get the weight of each restaurant
+            double weight = restaurants.get(i).getmRestaurantWeight();
 
+            // keep on adding that restaurant according to its weight to the weighted list
             for(int j = 0; j < weight; j++) {
-                weightedList.add(this.restaurants.get(i));
+                weightedRestos.add(restaurants.get(i));
             }
         }
-
-        int randomNum = new Random().nextInt(weightedList.size());
-        return weightedList.get(randomNum);
+        // the weighted list will have the equal probability of getting a restaurant
+        // based on how many times it occured in the weighted list
+        int randomNum = new Random().nextInt(weightedRestos.size());
+        return weightedRestos.get(randomNum);
     }
     /**
      * This method gets the sub activity results
@@ -138,8 +150,8 @@ public class RestaurantActivity extends AppCompatActivity implements RecyclerIte
      * @param data is the intent data that was passed back from the sub activity
      */
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-        if (requestCode == ADD_RESTO_REQUEST) {
-            if (resultCode == RESULT_OK) {
+        if (requestCode == ADD_RESTO_REQUEST) { // if the user presses the ADD button
+            if (resultCode == RESULT_OK) {  // if the user presses submit instead of the cancel button
                 Bundle bundle = data.getExtras();
                 if (bundle != null) {
                     String restoName = bundle.getString("restoName");
@@ -149,8 +161,8 @@ public class RestaurantActivity extends AppCompatActivity implements RecyclerIte
                     mAdapter.notifyDataSetChanged();
                 }
             }
-        } else if (requestCode == EDIT_RESTO_REQUEST) {
-            if (resultCode == RESULT_OK) {
+        } else if (requestCode == EDIT_RESTO_REQUEST) { // if the user clicks on a restaurant in the list
+            if (resultCode == RESULT_OK) { // if the user presses submit instead of the cancel button
                 Bundle bundle = data.getExtras();
                 if (bundle != null) {
                     Integer position = bundle.getInt("position");
