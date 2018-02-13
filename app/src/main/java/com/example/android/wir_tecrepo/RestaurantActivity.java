@@ -65,7 +65,7 @@ public class RestaurantActivity extends AppCompatActivity implements RecyclerIte
         // updates the restaurant list UI
         mAdapter.notifyDataSetChanged();
 
-        // Add Button to go to add a new restaurant activity
+        // ADD Button to go to add a new restaurant activity
         Button add = (Button) findViewById(R.id.add_resto);
         add.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -75,19 +75,29 @@ public class RestaurantActivity extends AppCompatActivity implements RecyclerIte
             }
         });
 
-        // Shuffle button to pick a random restaurant
+        // SURPRISE button to pick a random restaurant
         Button surprise = (Button) findViewById(R.id.surprise_resto);
         surprise.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 // EQUAL RANDOMNESS
                 //Collections.shuffle(restaurants);
-                //mAdapter.notifyDataSetChanged(); enable this to view the shuffling animation
+                mAdapter.notifyDataSetChanged(); //enable this to view the shuffling animation
 
                 // WEIGHTED RANDOMNESS
                 Restaurant chosenOne = doWeightedRandomness();
                 Snackbar.make(view, "LET'S EAT AT... " + chosenOne.getmRestaurantName() + "!!!", Snackbar.LENGTH_LONG)
                         .setAction("Action", null).show();
+            }
+        });
+
+        // CLEAR Button to go to add a new restaurant activity
+        Button clear = (Button) findViewById(R.id.clear_resto);
+        clear.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                restaurants.clear();
+                mAdapter.notifyDataSetChanged();
             }
         });
 
