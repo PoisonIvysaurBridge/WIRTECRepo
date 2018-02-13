@@ -81,7 +81,7 @@ public class RestaurantActivity extends AppCompatActivity implements RecyclerIte
             public void onClick(View view) {
                 Collections.shuffle(restaurants);
                 mAdapter.notifyDataSetChanged();
-                Snackbar.make(view, "The restaurant is... " + restaurants.get(0).getmRestaurantName() + "!!!", Snackbar.LENGTH_LONG)
+                Snackbar.make(view, "LET'S EAT AT... " + restaurants.get(0).getmRestaurantName() + "!!!", Snackbar.LENGTH_LONG)
                         .setAction("Action", null).show();
             }
         });

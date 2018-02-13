@@ -60,7 +60,8 @@ public class RestaurantAdapter extends RecyclerView.Adapter<RestaurantAdapter.My
     public void removeItem(int position) {
         restaurantList.remove(position);
         // notify the item removed by position
-        // to perform recycler view delete animations
+        // to perform recyc
+        // r view delete animations
         // NOTE: don't call notifyDataSetChanged()
         notifyItemRemoved(position);
     }
