@@ -12,6 +12,7 @@ import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.helper.ItemTouchHelper;
 import android.view.View;
 import android.widget.Button;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import java.util.ArrayList;
@@ -28,6 +29,7 @@ public class RestaurantActivity extends AppCompatActivity implements RecyclerIte
     /** The adapter used for the recycler view */               private RestaurantAdapter mAdapter;
     /** The layout manager for the recycler view */             private RecyclerView.LayoutManager mLayoutManager;
     /** The layout for the snackbar with undo delete */         private ConstraintLayout constraintLayout;
+    /** TextView that is displayed when the list is empty */    private TextView mEmptyStateTextView;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -44,6 +46,9 @@ public class RestaurantActivity extends AppCompatActivity implements RecyclerIte
         // use a linear layout manager
         mLayoutManager = new LinearLayoutManager(this);
         mRecyclerView.setLayoutManager(mLayoutManager);
+
+        mEmptyStateTextView = (TextView) findViewById(R.id.empty_view);
+        mEmptyStateTextView.setVisibility(View.GONE);
 
         // This draws a line separator for each row
         //mRecyclerView.addItemDecoration(new DividerItemDecoration(this, LinearLayoutManager.VERTICAL));
@@ -97,7 +102,10 @@ public class RestaurantActivity extends AppCompatActivity implements RecyclerIte
             @Override
             public void onClick(View view) {
                 restaurants.clear();
-                mAdapter.notifyDataSetChanged();
+                //mAdapter.notifyDataSetChanged();
+                mRecyclerView.setVisibility(View.GONE);
+                mEmptyStateTextView.setText("No Restaurants. :(");
+                mEmptyStateTextView.setVisibility(View.VISIBLE);
             }
         });
 

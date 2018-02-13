@@ -53,6 +53,15 @@
             android:layout_height="wrap_content"
             android:scrollbars="vertical" />
 
+        <!-- Empty view is only visible when the list has no items. -->
+        <TextView
+            android:id="@+id/empty_view"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginVertical="@dimen/activity_vertical_margin"
+            android:textAppearance="?android:textAppearanceMedium" />
+
     </LinearLayout>
 
 
