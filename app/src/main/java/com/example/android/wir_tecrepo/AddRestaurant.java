@@ -68,6 +68,7 @@ public class AddRestaurant extends AppCompatActivity {
 
         if(isCanceled == false){    // if not canceled, put in values
             // Make a bundle containing the current restaurant details
+            //Toast.makeText(this,"isCanceled is FALSE", Toast.LENGTH_SHORT).show();
             Bundle bundle = new Bundle();
             bundle.putString("restoName", editName.getText().toString());
             bundle.putString("restoDesc", editDesc.getText().toString());
@@ -77,9 +78,11 @@ public class AddRestaurant extends AppCompatActivity {
             }
 
             intent.putExtras(bundle);
+            setResult(RESULT_OK, intent);
         }
-
-        setResult(RESULT_CANCELED, intent);
+        else {
+            setResult(RESULT_CANCELED, intent);
+        }
         super.finish();
     }
 }
