@@ -1,12 +1,14 @@
 package com.example.android.wir_tecrepo;
 
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
@@ -47,7 +49,10 @@ public class AddRestaurant extends AppCompatActivity {
         submit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                finish();
+                if(checkInputs()){
+                    prepareData();
+                    finish();
+                }
             }
         });
 
@@ -62,8 +67,37 @@ public class AddRestaurant extends AppCompatActivity {
         });
     }
 
-    @Override
-    public void finish() {
+    public boolean checkInputs(){
+        if(editName.getText().toString().length() == 0){
+            InputMethodManager imm = (InputMethodManager)getSystemService(Context.INPUT_METHOD_SERVICE);
+            imm.hideSoftInputFromWindow(this.editName.getWindowToken(), 0);
+            this.displayFeedback("Please input a name for the new restaurant.");
+            return false;
+        }
+        if(editDesc.getText().toString().length() == 0){
+            InputMethodManager imm = (InputMethodManager)getSystemService(Context.INPUT_METHOD_SERVICE);
+            imm.hideSoftInputFromWindow(this.editDesc.getWindowToken(), 0);
+            this.displayFeedback("Please input a description for the new restaurant.");
+            return false;
+        }
+
+        double weight = -1;
+        // if restaurant weight edit text field not empty
+        if(editWeight.getText().toString().length() > 0) {
+            weight = Double.parseDouble(editWeight.getText().toString());
+        }
+
+        // check also if the weight provided is within the proper range
+        if(weight <= 0 || weight > 10) {
+            InputMethodManager imm = (InputMethodManager)getSystemService(Context.INPUT_METHOD_SERVICE);
+            imm.hideSoftInputFromWindow(editWeight.getWindowToken(), 0);
+            this.displayFeedback("Please enter a restaurant weight between 1 and 10.");
+            return false;
+        }
+        return true;
+    }
+
+    public void prepareData(){
         Intent intent = new Intent();
 
         if(isCanceled == false){    // if not canceled, put in values
@@ -80,9 +114,12 @@ public class AddRestaurant extends AppCompatActivity {
             intent.putExtras(bundle);
             setResult(RESULT_OK, intent);
         }
-        else {
+        else {  // if cancel button is pressed
             setResult(RESULT_CANCELED, intent);
         }
-        super.finish();
+    }
+
+    public void displayFeedback(String prompt){
+        Toast.makeText(AddRestaurant.this, prompt, Toast.LENGTH_SHORT).show();
     }
 }

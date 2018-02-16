@@ -72,10 +72,20 @@
                 android:id="@+id/resto_weight"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_alignParentRight="true"
+                android:layout_alignParentEnd="true"
+                android:layout_below="@+id/resto_desc"
                 android:textColor="@color/weight"
                 tools:text="Weight" />
-
+<!--
+            <ImageButton
+                android:id="@+id/moreButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:layout_alignParentTop="true"
+                android:background="?attr/selectableItemBackground"
+                card_view:srcCompat="@drawable/ic_more_vert" />
+-->
         </RelativeLayout>
     </android.support.v7.widget.CardView>
 </FrameLayout>

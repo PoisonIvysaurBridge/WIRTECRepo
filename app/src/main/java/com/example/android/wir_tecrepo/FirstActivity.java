@@ -55,7 +55,7 @@ public class FirstActivity extends AppCompatActivity {
             public void afterTextChanged(Editable name) {
                 TextView welcome = (TextView) findViewById(R.id.welcome);
                 welcome.setText(name.toString());
-                welcome.setText("Hello " + name.toString() + "! Welcome to Chopin world!");
+                welcome.setText("Hello " + name.toString() + "! Welcome to the WIR-TEC Repo of Ivy!!!");
             }
 
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {

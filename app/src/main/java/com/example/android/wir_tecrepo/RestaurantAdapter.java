@@ -3,9 +3,12 @@ package com.example.android.wir_tecrepo;
 import android.content.Context;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.ImageButton;
+import android.widget.PopupMenu;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -18,6 +21,7 @@ public class RestaurantAdapter extends RecyclerView.Adapter<RestaurantAdapter.My
 
     public class MyViewHolder extends RecyclerView.ViewHolder {
         public TextView name, desc, weight;
+        //public final ImageButton moreButt;
         public RelativeLayout viewBackground, viewForeground;
 
         public MyViewHolder(View view) {
@@ -25,6 +29,7 @@ public class RestaurantAdapter extends RecyclerView.Adapter<RestaurantAdapter.My
             name = (TextView) view.findViewById(R.id.resto_name);
             desc = (TextView) view.findViewById(R.id.resto_desc);
             weight = (TextView) view.findViewById(R.id.resto_weight);
+            //moreButt = (ImageButton) view.findViewById(R.id.moreButton);
 
             viewBackground = view.findViewById(R.id.view_background);
             viewForeground = view.findViewById(R.id.view_foreground);
@@ -50,6 +55,39 @@ public class RestaurantAdapter extends RecyclerView.Adapter<RestaurantAdapter.My
         holder.name.setText(restaurant.getmRestaurantName());
         holder.desc.setText(restaurant.getmRestaurantDesc());
         holder.weight.setText("" + restaurant.getmRestaurantWeight());
+
+        /*
+        holder.moreButt.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                //creating a popup menu
+                PopupMenu popup = new PopupMenu(this,holder.moreButt);
+                //inflating menu from xml resource
+                popup.inflate(R.menu.options_menu);
+                //adding click listener
+            popup.setOnMenuItemClickListener(new PopupMenu.OnMenuItemClickListener() {
+                @Override
+                public boolean onMenuItemClick(MenuItem item) {
+                    switch (item.getItemId()) {
+                        case R.id.menu1:
+                            //handle menu1 click
+                                break;
+                            case R.id.menu2:
+                                //handle menu2 click
+                                break;
+                            case R.id.menu3:
+                                //handle menu3 click
+                                break;
+                        }
+                        return false;
+                    }
+                });
+                //displaying the popup
+                popup.show();
+
+            }
+        });*/
     }
 
     @Override

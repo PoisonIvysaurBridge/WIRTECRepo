@@ -86,13 +86,19 @@ public class RestaurantActivity extends AppCompatActivity implements RecyclerIte
             @Override
             public void onClick(View view) {
                 // EQUAL RANDOMNESS
-                //Collections.shuffle(restaurants);
+                Collections.shuffle(restaurants);
                 mAdapter.notifyDataSetChanged(); //enable this to view the shuffling animation
 
                 // WEIGHTED RANDOMNESS
                 Restaurant chosenOne = doWeightedRandomness();
-                Snackbar.make(view, "LET'S EAT AT... " + chosenOne.getmRestaurantName() + "!!!", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
+                if(chosenOne == null){
+                    Snackbar.make(view, "You have no restaurants :(", Snackbar.LENGTH_LONG)
+                            .setAction("Action", null).show();
+                }
+                else{
+                    Snackbar.make(view, "LET'S EAT AT... " + chosenOne.getmRestaurantName() + "!!!", Snackbar.LENGTH_LONG)
+                            .setAction("Action", null).show();
+                }
             }
         });
 
@@ -130,7 +136,7 @@ public class RestaurantActivity extends AppCompatActivity implements RecyclerIte
 
             @Override
             public void onLongClick(View view, int position) {
-                Toast.makeText(getApplicationContext(), "You Long pressed me!", Toast.LENGTH_SHORT).show();
+                //Toast.makeText(getApplicationContext(), "You Long pressed me!", Toast.LENGTH_SHORT).show();
             }
         }));
     }
@@ -156,10 +162,13 @@ public class RestaurantActivity extends AppCompatActivity implements RecyclerIte
                 weightedRestos.add(restaurants.get(i));
             }
         }
-        // the weighted list will have the equal probability of getting a restaurant
-        // based on how many times it occured in the weighted list
-        int randomNum = new Random().nextInt(weightedRestos.size());
-        return weightedRestos.get(randomNum);
+        if(restaurants.size() > 0){
+            // the weighted list will have the equal probability of getting a restaurant
+            // based on how many times it occured in the weighted list
+            int randomNum = new Random().nextInt(weightedRestos.size());
+            return weightedRestos.get(randomNum);
+        }
+        return null;
     }
     /**
      * This method gets the sub activity results
