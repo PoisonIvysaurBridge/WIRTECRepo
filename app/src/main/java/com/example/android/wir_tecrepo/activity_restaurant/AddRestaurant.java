@@ -70,13 +70,13 @@ public class AddRestaurant extends AppCompatActivity {
         if(editName.getText().toString().length() == 0){
             InputMethodManager imm = (InputMethodManager)getSystemService(Context.INPUT_METHOD_SERVICE);
             imm.hideSoftInputFromWindow(this.editName.getWindowToken(), 0);
-            this.displayFeedback("Please input a name for the new restaurant.");
+            displayFeedback("Please input a name for the new restaurant.");
             return false;
         }
         if(editDesc.getText().toString().length() == 0){
             InputMethodManager imm = (InputMethodManager)getSystemService(Context.INPUT_METHOD_SERVICE);
             imm.hideSoftInputFromWindow(this.editDesc.getWindowToken(), 0);
-            this.displayFeedback("Please input a description for the new restaurant.");
+            displayFeedback("Please input a description for the new restaurant.");
             return false;
         }
 
@@ -90,7 +90,7 @@ public class AddRestaurant extends AppCompatActivity {
         if(weight <= 0 || weight > 10) {
             InputMethodManager imm = (InputMethodManager)getSystemService(Context.INPUT_METHOD_SERVICE);
             imm.hideSoftInputFromWindow(editWeight.getWindowToken(), 0);
-            this.displayFeedback("Please enter a restaurant weight between 1 and 10.");
+            displayFeedback("Please enter a restaurant weight between 1 and 10.");
             return false;
         }
         return true;
@@ -106,9 +106,8 @@ public class AddRestaurant extends AppCompatActivity {
             bundle.putString("restoName", editName.getText().toString());
             bundle.putString("restoDesc", editDesc.getText().toString());
             bundle.putDouble("restoWeight", Double.parseDouble(editWeight.getText().toString()));
-            if(position != -1){
-                bundle.putInt("position", position);
-            }
+            bundle.putInt("position", position);
+
 
             intent.putExtras(bundle);
             setResult(RESULT_OK, intent);
