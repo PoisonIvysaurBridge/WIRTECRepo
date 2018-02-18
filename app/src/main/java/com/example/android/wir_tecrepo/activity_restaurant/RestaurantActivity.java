@@ -2,6 +2,7 @@ package com.example.android.wir_tecrepo.activity_restaurant;
 
 import android.content.Intent;
 import android.graphics.Color;
+import android.graphics.Typeface;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.constraint.ConstraintLayout;
@@ -97,8 +98,12 @@ public class RestaurantActivity extends AppCompatActivity implements RecyclerIte
                             .setAction("Action", null).show();
                 }
                 else{
-                    Snackbar.make(view, "LET'S EAT AT... " + chosenOne.getmRestaurantName() + "!!!", Snackbar.LENGTH_LONG)
-                            .setAction("Action", null).show();
+                    Snackbar snackbar = Snackbar.make(view, "LET'S EAT AT... " + chosenOne.getmRestaurantName() + "!!!", Snackbar.LENGTH_LONG);
+                    snackbar.setAction("Action", null).show();
+                    TextView snackbarActionTextView =  snackbar.getView().findViewById( android.support.design.R.id.snackbar_text );
+                    snackbarActionTextView.setTextSize( 30 );
+                    snackbarActionTextView.setTypeface(snackbarActionTextView.getTypeface(), Typeface.BOLD);
+
                 }
             }
         });
@@ -261,6 +266,7 @@ public class RestaurantActivity extends AppCompatActivity implements RecyclerIte
                 }
             });
             snackbar.setActionTextColor(Color.YELLOW);
+
             snackbar.show();
         }
     }
