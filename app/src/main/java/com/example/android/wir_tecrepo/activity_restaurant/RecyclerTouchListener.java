@@ -1,4 +1,4 @@
-package com.example.android.wir_tecrepo;
+package com.example.android.wir_tecrepo.activity_restaurant;
 
 import android.content.Context;
 import android.support.v7.widget.RecyclerView;

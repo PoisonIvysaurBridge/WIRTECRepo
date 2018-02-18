@@ -1,4 +1,4 @@
-package com.example.android.wir_tecrepo;
+package com.example.android.wir_tecrepo.activity_restaurant;
 
 /**
  * {@link Restaurant} represents a restaurant that the user wants to add into the restaurant list.

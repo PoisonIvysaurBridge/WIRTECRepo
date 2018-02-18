@@ -1,9 +1,11 @@
-package com.example.android.wir_tecrepo;
+package com.example.android.wir_tecrepo.miscellaneous;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.TextView;
+
+import com.example.android.wir_tecrepo.R;
 
 public class CourtCounter extends AppCompatActivity{
     private int scoreA = 0;

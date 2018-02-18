@@ -20,23 +20,23 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".HappyBirthdayCard"
+            android:name=".miscellaneous.HappyBirthdayCard"
             android:label="Birthday Card"
             android:parentActivityName=".MainActivity"/>
         <activity
-            android:name=".CookieActivity"
+            android:name=".miscellaneous.CookieActivity"
             android:label="Eat Cookie"
             android:parentActivityName=".MainActivity"/>
         <activity
-            android:name=".CourtCounter"
+            android:name=".miscellaneous.CourtCounter"
             android:label="Court Counter"
             android:parentActivityName=".MainActivity"/>
         <activity
-            android:name=".JustJava"
+            android:name=".miscellaneous.JustJava"
             android:label="Just Java"
             android:parentActivityName=".MainActivity"/>
         <activity
-            android:name=".ChopinTime"
+            android:name=".miscellaneous.ChopinTime"
             android:label="Chopin Time"
             android:parentActivityName=".MainActivity"/>
         <activity
@@ -48,13 +48,13 @@
             android:label="Lifecycles"
             android:parentActivityName=".MainActivity"/>
         <activity
-            android:name=".RestaurantActivity"
+            android:name=".activity_restaurant.RestaurantActivity"
             android:label="Restaurant Randomizer"
             android:parentActivityName=".MainActivity"/>
         <activity
-            android:name=".AddRestaurant"
+            android:name=".activity_restaurant.AddRestaurant"
             android:label="Restaurant Details"
-            android:parentActivityName=".RestaurantActivity"
+            android:parentActivityName=".activity_restaurant.RestaurantActivity"
             android:screenOrientation="portrait"/>
     </application>
 

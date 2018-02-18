@@ -1,7 +1,5 @@
 package com.example.android.wir_tecrepo;
 
-import android.content.ClipData;
-import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
@@ -16,6 +14,13 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.TextView;
+
+import com.example.android.wir_tecrepo.activity_restaurant.RestaurantActivity;
+import com.example.android.wir_tecrepo.miscellaneous.ChopinTime;
+import com.example.android.wir_tecrepo.miscellaneous.CookieActivity;
+import com.example.android.wir_tecrepo.miscellaneous.CourtCounter;
+import com.example.android.wir_tecrepo.miscellaneous.HappyBirthdayCard;
+import com.example.android.wir_tecrepo.miscellaneous.JustJava;
 
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {

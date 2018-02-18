@@ -1,4 +1,4 @@
-package com.example.android.wir_tecrepo;
+package com.example.android.wir_tecrepo.activity_restaurant;
 
 import android.content.Intent;
 import android.graphics.Color;
@@ -13,6 +13,8 @@ import android.support.v7.widget.helper.ItemTouchHelper;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
+
+import com.example.android.wir_tecrepo.R;
 
 import java.util.ArrayList;
 import java.util.Collections;

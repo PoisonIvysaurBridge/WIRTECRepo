@@ -1,11 +1,10 @@
-package com.example.android.wir_tecrepo;
+package com.example.android.wir_tecrepo.activity_restaurant;
 
 
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
-import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
@@ -13,13 +12,13 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
-import java.util.Collections;
+import com.example.android.wir_tecrepo.R;
 
 public class AddRestaurant extends AppCompatActivity {
     private EditText editName,
                      editDesc,
                      editWeight;
-    private Integer position = -1;
+    private int position = -1;
     private boolean isCanceled = false;
 
     @Override
@@ -100,7 +99,7 @@ public class AddRestaurant extends AppCompatActivity {
     public void prepareData(){
         Intent intent = new Intent();
 
-        if(isCanceled == false){    // if not canceled, put in values
+        if(!isCanceled){    // if not canceled, put in values
             // Make a bundle containing the current restaurant details
             //Toast.makeText(this,"isCanceled is FALSE", Toast.LENGTH_SHORT).show();
             Bundle bundle = new Bundle();
