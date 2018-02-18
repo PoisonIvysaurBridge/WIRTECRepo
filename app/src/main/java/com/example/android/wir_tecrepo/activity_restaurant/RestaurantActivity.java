@@ -115,7 +115,7 @@ public class RestaurantActivity extends AppCompatActivity implements RecyclerIte
                 mEmptyStateTextView.setVisibility(View.VISIBLE);
             }
         });
-
+        /* Uncomment this if you want to make the entire list row to be clickable instead of an EDIT button
         // add a click listener to go to the restaurant details for editing an existing item
         mRecyclerView.addOnItemTouchListener(new RecyclerTouchListener(getApplicationContext(), mRecyclerView, new RecyclerTouchListener.ClickListener() {
             @Override
@@ -139,7 +139,7 @@ public class RestaurantActivity extends AppCompatActivity implements RecyclerIte
                 //Toast.makeText(getApplicationContext(), "You Long pressed me!", Toast.LENGTH_SHORT).show();
             }
         }));
-
+        */
     }
 
     /**
@@ -199,10 +199,13 @@ public class RestaurantActivity extends AppCompatActivity implements RecyclerIte
                     String restoName = bundle.getString("restoName");
                     String restoDesc = bundle.getString("restoDesc");
                     Double restoWeight = bundle.getDouble("restoWeight", 0.0);
-                    restaurants.get(position).setmRestaurantName(restoName);
-                    restaurants.get(position).setmRestaurantDesc(restoDesc);
-                    restaurants.get(position).setmRestaurantWeight(restoWeight);
-                    mAdapter.notifyDataSetChanged();
+
+                    if(position >= 0) {
+                        restaurants.get(position).setmRestaurantName(restoName);
+                        restaurants.get(position).setmRestaurantDesc(restoDesc);
+                        restaurants.get(position).setmRestaurantWeight(restoWeight);
+                        mAdapter.notifyDataSetChanged();
+                    }
                 }
             }
         }
