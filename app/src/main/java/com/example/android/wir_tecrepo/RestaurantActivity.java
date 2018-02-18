@@ -119,7 +119,6 @@ public class RestaurantActivity extends AppCompatActivity implements RecyclerIte
         mRecyclerView.addOnItemTouchListener(new RecyclerTouchListener(getApplicationContext(), mRecyclerView, new RecyclerTouchListener.ClickListener() {
             @Override
             public void onClick(View view, int position) {
-                Restaurant restaurant = restaurants.get(position);
                 // Toast.makeText(getApplicationContext(), restaurant.getmRestaurantName() + " is selected!", Toast.LENGTH_SHORT).show();
 
                 // Make a bundle containing the current restaurant details
