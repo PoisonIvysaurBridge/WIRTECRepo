@@ -1,9 +1,13 @@
 package com.example.android.wir_tecrepo.activity_restaurant;
 
+import android.app.Activity;
+import android.content.Intent;
+import android.os.Bundle;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
@@ -17,7 +21,9 @@ public class RestaurantAdapter extends RecyclerView.Adapter<RestaurantAdapter.My
 
     public class MyViewHolder extends RecyclerView.ViewHolder {
         public TextView name, desc, weight;
+        public Button editResto;
         //public final ImageButton moreButt;
+        private int modelIndex = -1;
         public RelativeLayout viewBackground, viewForeground;
 
         public MyViewHolder(View view) {
@@ -25,10 +31,29 @@ public class RestaurantAdapter extends RecyclerView.Adapter<RestaurantAdapter.My
             name = (TextView) view.findViewById(R.id.resto_name);
             desc = (TextView) view.findViewById(R.id.resto_desc);
             weight = (TextView) view.findViewById(R.id.resto_weight);
+            editResto = (Button) view.findViewById(R.id.edit_resto);
             //moreButt = (ImageButton) view.findViewById(R.id.moreButton);
 
             viewBackground = view.findViewById(R.id.view_background);
             viewForeground = view.findViewById(R.id.view_foreground);
+
+            editResto.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    Activity activity = (Activity) itemView.getContext();
+                    Intent intent = new Intent(activity, AddRestaurant.class);
+
+                    // Make a bundle containing the current restaurant details
+                    Bundle bundle = new Bundle();
+                    bundle.putInt("position", modelIndex);
+                    bundle.putString("restoName", name.getText().toString());
+                    bundle.putString("restoDesc", desc.getText().toString());
+                    bundle.putDouble("restoWeight", Double.parseDouble(weight.getText().toString()));
+                    // Edit the restaurant item
+                    intent.putExtras(bundle);
+                    activity.startActivityForResult(intent, RestaurantActivity.EDIT_RESTO_REQUEST);
+                }
+            });
         }
     }
 
@@ -51,6 +76,7 @@ public class RestaurantAdapter extends RecyclerView.Adapter<RestaurantAdapter.My
         holder.name.setText(restaurant.getmRestaurantName());
         holder.desc.setText(restaurant.getmRestaurantDesc());
         holder.weight.setText("" + restaurant.getmRestaurantWeight());
+        holder.modelIndex = position;
 
         /*
         holder.moreButt.setOnClickListener(new View.OnClickListener() {
@@ -106,102 +132,3 @@ public class RestaurantAdapter extends RecyclerView.Adapter<RestaurantAdapter.My
         notifyItemInserted(position);
     }
 }
-
-
-
-
-//
-//import android.content.Context;
-//import android.support.v4.content.ContextCompat;
-//import android.support.v7.widget.RecyclerView;
-//import android.view.LayoutInflater;
-//import android.view.View;
-//import android.view.ViewGroup;
-//import android.widget.ArrayAdapter;
-//import android.widget.ImageView;
-//import android.widget.TextView;
-//
-//import java.util.ArrayList;
-//import java.util.List;
-//
-///**
-// * {@link RestaurantAdapter} is an {@link ArrayAdapter} that can provide the layout for each list item
-// * based on a data source, which is a list of {@link Restaurant} objects.
-// */
-//
-//public class RestaurantAdapter extends RecyclerView.Adapter<RestaurantAdapter.ViewHolder> {
-//
-//    private ArrayList<Restaurant> mRestaurants;
-//
-//    // Provide a reference to the views for each data item
-//    // Complex data items may need more than one view per item, and
-//    // you provide access to all the views for a data item in a view holder
-//    public static class ViewHolder extends RecyclerView.ViewHolder {
-//        // each data item is just a string in this case
-//        public View mView;
-//        public TextView mName;
-//        public TextView mDesc;
-//        public TextView mWeight;
-//        public ViewHolder(View v, TextView name, TextView desc, TextView weight) {
-//            super(v);
-//            mName = name;
-//            mDesc = desc;
-//            mWeight = weight;
-//        }
-//    }
-//    /**
-//     * Create a new {@link Restaurant} object.
-//     *
-//     * @param restaurants is the list of {@link Restaurant}s to be displayed.
-//     */
-//    public RestaurantAdapter(ArrayList<Restaurant> restaurants) {
-//        // Here, we initialize the ArrayAdapter's internal storage for the context and the list.
-//        // the second argument is used when the ArrayAdapter is populating a single TextView.
-//        // Because this is a custom adapter for three TextViews, the adapter is not
-//        // going to use this second argument, so it can be any value. Here, we used 0.
-//        // create a new view
-//        mRestaurants = restaurants;
-//    }
-//
-//    // Create new views (invoked by the layout manager)
-//    @Override
-//    public RestaurantAdapter.ViewHolder onCreateViewHolder(ViewGroup parent,
-//                                                   int viewType) {
-//        // create a new view
-//        View listItemView = LayoutInflater.from(parent.getContext()).inflate(
-//                R.layout.restaurant_list_item, parent, false);
-//
-//        TextView name = (TextView) listItemView.findViewById(R.id.resto_name);
-//
-//        TextView desc = (TextView) listItemView.findViewById(R.id.resto_desc);
-//
-//        TextView weight = (TextView) listItemView.findViewById(R.id.resto_desc);
-//
-//        // set the view's size, margins, paddings and layout parameters
-//        ViewHolder vh = new ViewHolder(listItemView, name, desc, weight);
-//        return vh;
-//
-//
-//    }
-//
-//    // Replace the contents of a view (invoked by the layout manager)
-//    @Override
-//    public void onBindViewHolder(ViewHolder holder, int position) {
-//        // - get element from your dataset at this position
-//        // - replace the contents of the view with that element
-//
-//        holder.mName.setText(mRestaurants.get(position).getmRestaurantName());
-//
-//        holder.mDesc.setText(mRestaurants.get(position).getmRestaurantDesc());
-//
-//        holder.mWeight.setText("" +mRestaurants.get(position).getmRestaurantWeight());
-//
-//    }
-//
-//    // Return the size of your dataset (invoked by the layout manager)
-//    @Override
-//    public int getItemCount() {
-//        return mRestaurants.size();
-//    }
-//
-//}
