@@ -13,7 +13,6 @@ import android.support.v7.widget.helper.ItemTouchHelper;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -138,6 +137,7 @@ public class RestaurantActivity extends AppCompatActivity implements RecyclerIte
                 //Toast.makeText(getApplicationContext(), "You Long pressed me!", Toast.LENGTH_SHORT).show();
             }
         }));
+
     }
 
     /**
@@ -185,6 +185,8 @@ public class RestaurantActivity extends AppCompatActivity implements RecyclerIte
                     Double restoWeight = bundle.getDouble("restoWeight", 0.0);
                     restaurants.add(0, new Restaurant(restoName, restoDesc, restoWeight));
                     mAdapter.notifyDataSetChanged();
+                    mRecyclerView.setVisibility(View.VISIBLE);
+                    mEmptyStateTextView.setVisibility(View.GONE);
                 }
             }
         } else if (requestCode == EDIT_RESTO_REQUEST) { // if the user clicks on a restaurant in the list
