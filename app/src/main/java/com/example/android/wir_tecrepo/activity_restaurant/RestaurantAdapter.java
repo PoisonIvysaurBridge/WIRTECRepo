@@ -45,10 +45,10 @@ public class RestaurantAdapter extends RecyclerView.Adapter<RestaurantAdapter.My
 
                     // Make a bundle containing the current restaurant details
                     Bundle bundle = new Bundle();
-                    bundle.putInt("position", modelIndex);
-                    bundle.putString("restoName", name.getText().toString());
-                    bundle.putString("restoDesc", desc.getText().toString());
-                    bundle.putDouble("restoWeight", Double.parseDouble(weight.getText().toString()));
+                    bundle.putInt(AddRestaurant.EDIT_MODEL_INDEX_KEY, modelIndex);
+                    bundle.putString(AddRestaurant.RESTAURANT_NAME_KEY, name.getText().toString());
+                    bundle.putString(AddRestaurant.RESTAURANT_DESC_KEY, desc.getText().toString());
+                    bundle.putDouble(AddRestaurant.WEIGHT_KEY, Double.parseDouble(weight.getText().toString()));
                     // Edit the restaurant item
                     intent.putExtras(bundle);
                     activity.startActivityForResult(intent, RestaurantActivity.EDIT_RESTO_REQUEST);

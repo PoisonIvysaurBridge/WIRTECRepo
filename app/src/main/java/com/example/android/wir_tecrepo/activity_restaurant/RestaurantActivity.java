@@ -120,7 +120,6 @@ public class RestaurantActivity extends AppCompatActivity implements RecyclerIte
         restaurants.add(new Restaurant("Pericos", "Canteen @ LS building DLSU", 5));
         restaurants.add(new Restaurant("La Casita @ 6th Andrew", "Canteen @ Andrew building DLSU", 9));
         restaurants.add(new Restaurant("La Casita @ 2nd Razon", "Canteen @ Razon building DLSU", 3));
-
         restaurants.add(new Restaurant("first resto", "Canteen @ LS building DLSU", 5));
         restaurants.add(new Restaurant("second resto", "Canteen @ Andrew building DLSU", 9));
         restaurants.add(new Restaurant("third resto", "Canteen @ Razon building DLSU", 3));
@@ -130,7 +129,6 @@ public class RestaurantActivity extends AppCompatActivity implements RecyclerIte
         restaurants.add(new Restaurant("seventh resto", "Canteen @ LS building DLSU", 5));
         restaurants.add(new Restaurant("eighth resto", "Canteen @ Andrew building DLSU", 9));
         restaurants.add(new Restaurant("9th", "Canteen @ Razon building DLSU", 3));
-
     }
 
     /**
@@ -227,9 +225,9 @@ public class RestaurantActivity extends AppCompatActivity implements RecyclerIte
             if (resultCode == RESULT_OK) {  // if the user presses submit instead of the cancel button
                 Bundle bundle = data.getExtras();
                 if (bundle != null) {
-                    String restoName = bundle.getString("restoName");
-                    String restoDesc = bundle.getString("restoDesc");
-                    Double restoWeight = bundle.getDouble("restoWeight", 0.0);
+                    String restoName = bundle.getString(AddRestaurant.RESTAURANT_NAME_KEY);
+                    String restoDesc = bundle.getString(AddRestaurant.RESTAURANT_DESC_KEY);
+                    Double restoWeight = bundle.getDouble(AddRestaurant.WEIGHT_KEY, 0.0);
                     restaurants.add(0, new Restaurant(restoName, restoDesc, restoWeight));
                     mAdapter.notifyDataSetChanged();
                     mRecyclerView.setVisibility(View.VISIBLE);
@@ -240,10 +238,10 @@ public class RestaurantActivity extends AppCompatActivity implements RecyclerIte
             if (resultCode == RESULT_OK) { // if the user presses submit instead of the cancel button
                 Bundle bundle = data.getExtras();
                 if (bundle != null) {
-                    Integer position = bundle.getInt("position");
-                    String restoName = bundle.getString("restoName");
-                    String restoDesc = bundle.getString("restoDesc");
-                    Double restoWeight = bundle.getDouble("restoWeight", 0.0);
+                    Integer position = bundle.getInt(AddRestaurant.EDIT_MODEL_INDEX_KEY, -1);
+                    String restoName = bundle.getString(AddRestaurant.RESTAURANT_NAME_KEY);
+                    String restoDesc = bundle.getString(AddRestaurant.RESTAURANT_DESC_KEY);
+                    Double restoWeight = bundle.getDouble(AddRestaurant.WEIGHT_KEY, 0.0);
 
                     if(position >= 0) {
                         restaurants.get(position).setmRestaurantName(restoName);

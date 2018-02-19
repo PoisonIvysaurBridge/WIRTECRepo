@@ -38,10 +38,10 @@ public class AddRestaurant extends AppCompatActivity {
         Intent intent = getIntent();
         Bundle bundle = intent.getExtras();
         if (bundle != null){ // there is a bundle
-            position = bundle.getInt("position");
-            String restoName = bundle.getString("restoName");
-            String restoDesc = bundle.getString("restoDesc");
-            Double restoWeight = bundle.getDouble("restoWeight", 0);
+            position = bundle.getInt(EDIT_MODEL_INDEX_KEY, -1);
+            String restoName = bundle.getString(RESTAURANT_NAME_KEY);
+            String restoDesc = bundle.getString(RESTAURANT_DESC_KEY);
+            Double restoWeight = bundle.getDouble(WEIGHT_KEY, 0.0);
 
             editName.setText("" + restoName);
             editDesc.setText("" + restoDesc);
@@ -107,10 +107,10 @@ public class AddRestaurant extends AppCompatActivity {
             // Make a bundle containing the current restaurant details
             //Toast.makeText(this,"isCanceled is FALSE", Toast.LENGTH_SHORT).show();
             Bundle bundle = new Bundle();
-            bundle.putString("restoName", editName.getText().toString());
-            bundle.putString("restoDesc", editDesc.getText().toString());
-            bundle.putDouble("restoWeight", Double.parseDouble(editWeight.getText().toString()));
-            bundle.putInt("position", position);
+            bundle.putString(RESTAURANT_NAME_KEY, editName.getText().toString());
+            bundle.putString(RESTAURANT_DESC_KEY, editDesc.getText().toString());
+            bundle.putDouble(WEIGHT_KEY, Double.parseDouble(editWeight.getText().toString()));
+            bundle.putInt(EDIT_MODEL_INDEX_KEY, position);
 
 
             intent.putExtras(bundle);
