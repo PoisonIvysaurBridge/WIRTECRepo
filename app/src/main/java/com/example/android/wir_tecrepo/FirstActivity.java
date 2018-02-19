@@ -25,7 +25,10 @@ public class FirstActivity extends AppCompatActivity {
         setContentView(R.layout.activity_first);
 
         // SUBMIT BUTTON
-        Button submit = (Button) findViewById(R.id.submit);
+        final Button submit = (Button) findViewById(R.id.submit);
+        final EditText editText = (EditText) findViewById(R.id.name_edit_text);
+        final TextView welcome = (TextView) findViewById(R.id.welcome);
+        CheckBox autoRefresh = (CheckBox) findViewById(R.id.auto_refresh);
 
         submit.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -37,19 +40,13 @@ public class FirstActivity extends AppCompatActivity {
                 InputMethodManager imm = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
                 imm.hideSoftInputFromWindow(mainLayout.getWindowToken(), 0);
 
-                // Get the input in the edit field
-                EditText nameField = (EditText) findViewById(R.id.name_edit_text);
-
                 // Convert it to readable string text
-                String name = nameField.getText().toString();
+                String name = editText.getText().toString();
 
                 // Set it in welcome text view
-                TextView welcome = (TextView) findViewById(R.id.welcome);
                 welcome.setText("Hello " + name + "! Welcome to Chopin world!");
             }
         });
-
-        final EditText editText = (EditText) findViewById(R.id.name_edit_text);
 
         final TextWatcher inputTextWatcher = new TextWatcher() {
             public void afterTextChanged(Editable name) {
@@ -65,14 +62,14 @@ public class FirstActivity extends AppCompatActivity {
             }
         };
 
-        final CheckBox autoRefresh = (CheckBox) findViewById(R.id.auto_refresh);
-
         autoRefresh.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
-            public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
-                if (autoRefresh.isChecked()) {
+            public void onCheckedChanged(CompoundButton compoundButton, boolean isChecked) {
+                if (isChecked) {
                     editText.addTextChangedListener(inputTextWatcher);
+                    submit.setEnabled(false);
                 } else {
                     editText.removeTextChangedListener(inputTextWatcher);
+                    submit.setEnabled(true);
                 }
             }
         });
