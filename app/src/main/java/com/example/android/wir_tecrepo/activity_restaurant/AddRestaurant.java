@@ -15,6 +15,11 @@ import android.widget.Toast;
 import com.example.android.wir_tecrepo.R;
 
 public class AddRestaurant extends AppCompatActivity {
+    public final static String RESTAURANT_NAME_KEY = "RESTAURANT_NAME_KEY";
+    public final static String RESTAURANT_DESC_KEY = "RESTAURANT_DESC_Key";
+    public final static String WEIGHT_KEY = "WEIGHT_KEY";
+    public final static String EDIT_MODEL_INDEX_KEY = "EDIT_MODEL_INDEX_KEY";
+
     private EditText editName,
                      editDesc,
                      editWeight;
@@ -37,7 +42,6 @@ public class AddRestaurant extends AppCompatActivity {
             String restoName = bundle.getString("restoName");
             String restoDesc = bundle.getString("restoDesc");
             Double restoWeight = bundle.getDouble("restoWeight", 0);
-
 
             editName.setText("" + restoName);
             editDesc.setText("" + restoDesc);
