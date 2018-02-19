@@ -2,11 +2,12 @@ package com.example.android.wir_tecrepo;
 
 import android.content.Context;
 import android.content.Intent;
-import android.media.MediaPlayer;
-import android.os.Bundle;
+import android.graphics.Color;
 import android.support.v7.app.AppCompatActivity;
+import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
+import android.util.Log;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
@@ -17,15 +18,16 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
-public class FirstActivity extends AppCompatActivity {
+public class FirstActivity extends AppCompatActivity implements TextWatcher{
 
+    private final String displayFormat = "Hello %s! Welcome to the WIR-TEC Repo of Ivy!!!";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_first);
 
-        // SUBMIT BUTTON
         final Button submit = (Button) findViewById(R.id.submit);
+        submit.setTextColor(Color.WHITE);
         final EditText editText = (EditText) findViewById(R.id.name_edit_text);
         final TextView welcome = (TextView) findViewById(R.id.welcome);
         CheckBox autoRefresh = (CheckBox) findViewById(R.id.auto_refresh);
@@ -44,31 +46,19 @@ public class FirstActivity extends AppCompatActivity {
                 String name = editText.getText().toString();
 
                 // Set it in welcome text view
-                welcome.setText("Hello " + name + "! Welcome to Chopin world!");
+                welcome.setText(String.format(displayFormat, name));
             }
         });
-
-        final TextWatcher inputTextWatcher = new TextWatcher() {
-            public void afterTextChanged(Editable name) {
-                TextView welcome = (TextView) findViewById(R.id.welcome);
-                welcome.setText(name.toString());
-                welcome.setText("Hello " + name.toString() + "! Welcome to the WIR-TEC Repo of Ivy!!!");
-            }
-
-            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
-            }
-
-            public void onTextChanged(CharSequence s, int start, int before, int count) {
-            }
-        };
 
         autoRefresh.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             public void onCheckedChanged(CompoundButton compoundButton, boolean isChecked) {
                 if (isChecked) {
-                    editText.addTextChangedListener(inputTextWatcher);
+                    editText.addTextChangedListener(FirstActivity.this);
+                    submit.setBackgroundColor(Color.GRAY);
                     submit.setEnabled(false);
                 } else {
-                    editText.removeTextChangedListener(inputTextWatcher);
+                    editText.removeTextChangedListener(FirstActivity.this);
+                    submit.setBackgroundColor(getResources().getColor(R.color.colorAccent));
                     submit.setEnabled(true);
                 }
             }
@@ -83,5 +73,21 @@ public class FirstActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+    }
+
+    @Override
+    public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+
+    }
+
+    @Override
+    public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+
+    }
+
+    @Override
+    public void afterTextChanged(Editable name) {
+        final TextView welcome = (TextView) findViewById(R.id.welcome);
+        welcome.setText(String.format(displayFormat, name));
     }
 }
