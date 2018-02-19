@@ -38,21 +38,41 @@ public class RestaurantActivity extends AppCompatActivity implements RecyclerIte
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_restaurant);
 
-        mRecyclerView = (RecyclerView) findViewById(R.id.recycle_view);
+        // use a constraint layout for the delete snackbar with UNDO
         constraintLayout = findViewById(R.id.constraint_layout);
+
+        // set visibility of the empty view to be GONE initially
+        mEmptyStateTextView = (TextView) findViewById(R.id.empty_view);
+        mEmptyStateTextView.setVisibility(View.GONE);
+
+        // setup the recycler view adapter, layout, etc.
+        prepareRecyclerView();
+
+        // add restaurant items into the restaurants list
+        prepareRestaurants();
+
+        // prepare the buttons in the UI
+        prepareButtons();
+    }
+
+    /**
+     * This method setups the recycler view
+     * - setting the adapter
+     * - setting the layout of the recycler view
+     * - adding an item touch listener, etc.
+     */
+    public void prepareRecyclerView(){
+        mRecyclerView = (RecyclerView) findViewById(R.id.recycle_view);
 
         // use this setting to improve performance if you know that changes
         // in content do not change the layout size of the RecyclerView
         mRecyclerView.setHasFixedSize(true);
 
-        // use a linear layout manager
+        // use a linear layout manager for the recycler view
         mLayoutManager = new LinearLayoutManager(this);
         mRecyclerView.setLayoutManager(mLayoutManager);
 
-        mEmptyStateTextView = (TextView) findViewById(R.id.empty_view);
-        mEmptyStateTextView.setVisibility(View.GONE);
-
-        // This draws a line separator for each row
+        // This draws a line separator for each row, but card views are used so no need for this
         //mRecyclerView.addItemDecoration(new DividerItemDecoration(this, LinearLayoutManager.VERTICAL));
 
         // specify an adapter (see also next example)
@@ -66,11 +86,57 @@ public class RestaurantActivity extends AppCompatActivity implements RecyclerIte
         ItemTouchHelper.SimpleCallback itemTouchHelperCallback = new RecyclerItemTouchHelper(0, ItemTouchHelper.LEFT, this);
         new ItemTouchHelper(itemTouchHelperCallback).attachToRecyclerView(mRecyclerView);
 
-        // add restaurant items into the restaurants list
-        prepareRestaurants();
+        /* Uncomment this if you want to make the entire list row to be clickable instead of an EDIT button
+        // add a click listener to go to the restaurant details for editing an existing item
+        mRecyclerView.addOnItemTouchListener(new RecyclerTouchListener(getApplicationContext(), mRecyclerView, new RecyclerTouchListener.ClickListener() {
+            @Override
+            public void onClick(View view, int position) {
+                // Toast.makeText(getApplicationContext(), restaurant.getmRestaurantName() + " is selected!", Toast.LENGTH_SHORT).show();
 
-        // updates the restaurant list UI
-        mAdapter.notifyDataSetChanged();
+                // Make a bundle containing the current restaurant details
+                Bundle bundle = new Bundle();
+                bundle.putInt("position", position);
+                bundle.putString("restoName", restaurants.get(position).getmRestaurantName());
+                bundle.putString("restoDesc", restaurants.get(position).getmRestaurantDesc());
+                bundle.putDouble("restoWeight", restaurants.get(position).getmRestaurantWeight());
+                // Edit the restaurant item
+                Intent intent = new Intent(RestaurantActivity.this, AddRestaurant.class);
+                intent.putExtras(bundle);
+                startActivityForResult(intent, EDIT_RESTO_REQUEST);
+            }
+
+            @Override
+            public void onLongClick(View view, int position) {
+                //Toast.makeText(getApplicationContext(), "You Long pressed me!", Toast.LENGTH_SHORT).show();
+            }
+        }));
+        */
+    }
+
+    /**
+     * This method adds the dummy restaurant data into the restaurants list.
+     */
+    private void prepareRestaurants() {
+        restaurants.add(new Restaurant("Pericos", "Canteen @ LS building DLSU", 5));
+        restaurants.add(new Restaurant("La Casita @ 6th Andrew", "Canteen @ Andrew building DLSU", 9));
+        restaurants.add(new Restaurant("La Casita @ 2nd Razon", "Canteen @ Razon building DLSU", 3));
+
+        restaurants.add(new Restaurant("first resto", "Canteen @ LS building DLSU", 5));
+        restaurants.add(new Restaurant("second resto", "Canteen @ Andrew building DLSU", 9));
+        restaurants.add(new Restaurant("third resto", "Canteen @ Razon building DLSU", 3));
+        restaurants.add(new Restaurant("fourth resto", "Canteen @ LS building DLSU", 5));
+        restaurants.add(new Restaurant("5th rest", "Canteen @ Andrew building DLSU", 9));
+        restaurants.add(new Restaurant("6th resto", "Canteen @ Razon building DLSU", 3));
+        restaurants.add(new Restaurant("seventh resto", "Canteen @ LS building DLSU", 5));
+        restaurants.add(new Restaurant("eighth resto", "Canteen @ Andrew building DLSU", 9));
+        restaurants.add(new Restaurant("9th", "Canteen @ Razon building DLSU", 3));
+
+    }
+
+    /**
+     * This method setups the buttons to be displayed in the restaurant activity UI
+     */
+    public void prepareButtons(){
 
         // ADD Button to go to add a new restaurant activity
         Button add = (Button) findViewById(R.id.add_resto);
@@ -120,31 +186,6 @@ public class RestaurantActivity extends AppCompatActivity implements RecyclerIte
                 mEmptyStateTextView.setVisibility(View.VISIBLE);
             }
         });
-        /* Uncomment this if you want to make the entire list row to be clickable instead of an EDIT button
-        // add a click listener to go to the restaurant details for editing an existing item
-        mRecyclerView.addOnItemTouchListener(new RecyclerTouchListener(getApplicationContext(), mRecyclerView, new RecyclerTouchListener.ClickListener() {
-            @Override
-            public void onClick(View view, int position) {
-                // Toast.makeText(getApplicationContext(), restaurant.getmRestaurantName() + " is selected!", Toast.LENGTH_SHORT).show();
-
-                // Make a bundle containing the current restaurant details
-                Bundle bundle = new Bundle();
-                bundle.putInt("position", position);
-                bundle.putString("restoName", restaurants.get(position).getmRestaurantName());
-                bundle.putString("restoDesc", restaurants.get(position).getmRestaurantDesc());
-                bundle.putDouble("restoWeight", restaurants.get(position).getmRestaurantWeight());
-                // Edit the restaurant item
-                Intent intent = new Intent(RestaurantActivity.this, AddRestaurant.class);
-                intent.putExtras(bundle);
-                startActivityForResult(intent, EDIT_RESTO_REQUEST);
-            }
-
-            @Override
-            public void onLongClick(View view, int position) {
-                //Toast.makeText(getApplicationContext(), "You Long pressed me!", Toast.LENGTH_SHORT).show();
-            }
-        }));
-        */
     }
 
     /**
@@ -217,26 +258,6 @@ public class RestaurantActivity extends AppCompatActivity implements RecyclerIte
     }
 
     /**
-     * This method adds the dummy restaurant data into the restaurants list.
-     */
-    private void prepareRestaurants() {
-        restaurants.add(new Restaurant("Pericos", "Canteen @ LS building DLSU", 5));
-        restaurants.add(new Restaurant("La Casita @ 6th Andrew", "Canteen @ Andrew building DLSU", 9));
-        restaurants.add(new Restaurant("La Casita @ 2nd Razon", "Canteen @ Razon building DLSU", 3));
-
-        restaurants.add(new Restaurant("first resto", "Canteen @ LS building DLSU", 5));
-        restaurants.add(new Restaurant("second resto", "Canteen @ Andrew building DLSU", 9));
-        restaurants.add(new Restaurant("third resto", "Canteen @ Razon building DLSU", 3));
-        restaurants.add(new Restaurant("fourth resto", "Canteen @ LS building DLSU", 5));
-        restaurants.add(new Restaurant("5th rest", "Canteen @ Andrew building DLSU", 9));
-        restaurants.add(new Restaurant("6th resto", "Canteen @ Razon building DLSU", 3));
-        restaurants.add(new Restaurant("seventh resto", "Canteen @ LS building DLSU", 5));
-        restaurants.add(new Restaurant("eighth resto", "Canteen @ Andrew building DLSU", 9));
-        restaurants.add(new Restaurant("9th", "Canteen @ Razon building DLSU", 3));
-
-    }
-
-    /**
      * callback when recycler view is swiped
      * item will be removed on swiped
      * undo option will be provided in snackbar to restore the item
@@ -253,6 +274,11 @@ public class RestaurantActivity extends AppCompatActivity implements RecyclerIte
 
             // remove the item from recycler view
             mAdapter.removeItem(viewHolder.getAdapterPosition());
+            if(restaurants.size() == 0 ){
+                mRecyclerView.setVisibility(View.GONE);
+                mEmptyStateTextView.setText("No Restaurants. :(");
+                mEmptyStateTextView.setVisibility(View.VISIBLE);
+            }
 
             // showing snack bar with Undo option
             Snackbar snackbar = Snackbar
@@ -263,6 +289,8 @@ public class RestaurantActivity extends AppCompatActivity implements RecyclerIte
 
                     // undo is selected, restore the deleted item
                     mAdapter.restoreItem(deletedItem, deletedIndex);
+                    mEmptyStateTextView.setVisibility(View.GONE);
+                    mRecyclerView.setVisibility(View.VISIBLE);
                 }
             });
             snackbar.setActionTextColor(Color.YELLOW);
