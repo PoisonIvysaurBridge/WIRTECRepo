@@ -62,14 +62,14 @@
                 android:layout_marginBottom="32dp"
                 android:text="Hello ! Welcome to WIR-TEC Repo!"
                 android:textAlignment="center" />
-
+<!--
             <Button
                 android:id="@+id/lifecycle"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="See Lifecycles"
                 android:textColor="@android:color/white" />
-
+-->
 
         </LinearLayout>
 

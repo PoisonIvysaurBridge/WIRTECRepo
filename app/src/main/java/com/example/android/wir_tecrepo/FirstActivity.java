@@ -63,7 +63,7 @@ public class FirstActivity extends AppCompatActivity implements TextWatcher{
                 }
             }
         });
-
+        /*
         // The button that leads to the Lifecycle Activity
         Button lifecycle = (Button) findViewById(R.id.lifecycle);
         lifecycle.setOnClickListener(new View.OnClickListener(){
@@ -73,6 +73,7 @@ public class FirstActivity extends AppCompatActivity implements TextWatcher{
                 startActivity(intent);
             }
         });
+        */
     }
 
     @Override
