@@ -30,6 +30,7 @@ public class LifecycleActivity extends AppCompatActivity {
 /* ################################## RESTORE SAVED STATE DATA ##################################
         // OPTION #1: Using Bundle saveInstanceState to temporarily store current activity states
         // Bundle is only appropriate for saving orientation changes
+        // IT ONLY STORES IN RAM MEMORY AND IS VOLATILE
         if(savedInstanceState != null){
             ctrCreate = savedInstanceState.getInt("ctrCreate");
             ctrStart = savedInstanceState.getInt("ctrStart");
@@ -185,6 +186,7 @@ public class LifecycleActivity extends AppCompatActivity {
 
     // OPTION #1: Using Bundle saveInstanceState to temporarily store current activity states
     // Bundle is only appropriate for saving orientation changes
+    // IT ONLY STORES IN RAM MEMORY AND IS VOLATILE
     // This is called after onPause and before onStop,
     // hence it would not be able to save the counters in onStop and onDestroy
     // Option #1 can be replaced with Option #2 which is using SharedPreferences editor
