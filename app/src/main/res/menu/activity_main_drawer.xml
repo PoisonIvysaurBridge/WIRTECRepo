@@ -6,15 +6,15 @@
     <group android:checkableBehavior="single">
         <item
             android:id="@+id/first_activity"
-            android:icon="@drawable/ic_menu_slideshow"
+            android:icon="@drawable/ic_menu_looks_one_black_24dp"
             android:title="First Activity" />
         <item
             android:id="@+id/lifecycle_activity"
-            android:icon="@drawable/ic_menu_slideshow"
+            android:icon="@drawable/ic_android_black_24dp"
             android:title="Lifecycle Activity Test" />
         <item
             android:id="@+id/restaurant_activity"
-            android:icon="@drawable/ic_menu_slideshow"
+            android:icon="@drawable/ic_restaurant_black_24dp"
             android:title="Restaurant Randomizer" />
         <!--
         <item
@@ -41,7 +41,7 @@
         <menu>
             <item
                 android:id="@+id/birthday_card"
-                android:icon="@drawable/cake_logo"
+                android:icon="@drawable/ic_cake_black_24dp"
                 android:title="Birthday Card" />
 
             <item
@@ -60,7 +60,7 @@
                 android:title="Just Java" />
             <item
                 android:id="@+id/chopin_time"
-                android:icon="@drawable/ic_menu_slideshow"
+                android:icon="@drawable/ic_music_note_black_24dp"
                 android:title="Chopin Time" />
             <!--
             <item
