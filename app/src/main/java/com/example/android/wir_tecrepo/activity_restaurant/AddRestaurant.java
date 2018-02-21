@@ -27,7 +27,6 @@ public class AddRestaurant extends AppCompatActivity {
                      editDesc,
                      editWeight;
     private int position = -1;
-    private boolean isCanceled = false;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -66,8 +65,6 @@ public class AddRestaurant extends AppCompatActivity {
         cancel.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                //Toast.makeText(AddRestaurant.this, "Cancel", Toast.LENGTH_SHORT).show();
-                isCanceled = true;
                 finish();
             }
         });
