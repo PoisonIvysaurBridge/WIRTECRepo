@@ -105,23 +105,15 @@ public class AddRestaurant extends AppCompatActivity {
 
     public void prepareData(){
         Intent intent = new Intent();
-
-        if(!isCanceled){    // if not canceled, put in values
-            // Make a bundle containing the current restaurant details
-            //Toast.makeText(this,"isCanceled is FALSE", Toast.LENGTH_SHORT).show();
-            Bundle bundle = new Bundle();
-            bundle.putString(RESTAURANT_NAME_KEY, editName.getText().toString());
-            bundle.putString(RESTAURANT_DESC_KEY, editDesc.getText().toString());
-            bundle.putDouble(WEIGHT_KEY, Double.parseDouble(editWeight.getText().toString()));
-            bundle.putInt(EDIT_MODEL_INDEX_KEY, position);
+        Bundle bundle = new Bundle();
+        bundle.putString(RESTAURANT_NAME_KEY, editName.getText().toString());
+        bundle.putString(RESTAURANT_DESC_KEY, editDesc.getText().toString());
+        bundle.putDouble(WEIGHT_KEY, Double.parseDouble(editWeight.getText().toString()));
+        bundle.putInt(EDIT_MODEL_INDEX_KEY, position);
 
 
-            intent.putExtras(bundle);
-            setResult(RESULT_OK, intent);
-        }
-        else {  // if cancel button is pressed
-            setResult(RESULT_CANCELED, intent);
-        }
+        intent.putExtras(bundle);
+        setResult(RESULT_OK, intent);
     }
 
     public void displayFeedback(String prompt){
