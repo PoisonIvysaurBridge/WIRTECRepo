@@ -99,9 +99,9 @@ public class LockerActivity extends AppCompatActivity {
         shuffleBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                mLayoutManager1.smoothScrollToPosition(mRecyclerView1, new RecyclerView.State(), new Random().nextInt(locks.size()));
-                mLayoutManager2.smoothScrollToPosition(mRecyclerView2, new RecyclerView.State(), new Random().nextInt(locks.size()));
-                mLayoutManager3.smoothScrollToPosition(mRecyclerView3, new RecyclerView.State(), new Random().nextInt(locks.size()));
+                mRecyclerView1.smoothScrollToPosition(new Random().nextInt(locks.size()));
+                mRecyclerView2.smoothScrollToPosition(new Random().nextInt(locks.size()));
+                mRecyclerView3.smoothScrollToPosition(new Random().nextInt(locks.size()));
 
                 int randomNum = new Random().nextInt(locks.size());
             }
@@ -111,10 +111,9 @@ public class LockerActivity extends AppCompatActivity {
         enterBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                // verifyAndUnlock("1","2","3");
-                int lock1Index = mLayoutManager1.findFirstCompletelyVisibleItemPosition();
-                int lock2Index = mLayoutManager2.findFirstCompletelyVisibleItemPosition();
-                int lock3Index = mLayoutManager3.findFirstCompletelyVisibleItemPosition();
+                int lock1Index = mLayoutManager1.findFirstVisibleItemPosition() + 1;
+                int lock2Index = mLayoutManager2.findFirstVisibleItemPosition() + 1;
+                int lock3Index = mLayoutManager3.findFirstVisibleItemPosition() + 1;
 
                 LockerDataModel lock1 = locks.get(lock1Index);
                 LockerDataModel lock2 = locks.get(lock2Index);
