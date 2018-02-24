@@ -1,4 +1,4 @@
-package com.example.android.wir_tecrepo;
+package com.example.android.wir_tecrepo.activity_lock;
 
 public class LockerDataModel {
     private int number;

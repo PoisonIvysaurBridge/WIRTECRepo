@@ -1,4 +1,4 @@
-package com.example.android.wir_tecrepo;
+package com.example.android.wir_tecrepo.activity_lock;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;

@@ -15,6 +15,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.TextView;
 
+import com.example.android.wir_tecrepo.activity_lock.LockerActivity;
 import com.example.android.wir_tecrepo.activity_restaurant.RestaurantActivity;
 import com.example.android.wir_tecrepo.miscellaneous.ChopinTime;
 import com.example.android.wir_tecrepo.miscellaneous.CookieActivity;
@@ -122,7 +123,7 @@ public class MainActivity extends AppCompatActivity
             startActivity(intent);
 
         } else if (id == R.id.lock_activity) {
-            Intent intent = new Intent(MainActivity.this, MusicPlayerActivity.class);
+            Intent intent = new Intent(MainActivity.this, LockerActivity.class);
             startActivity(intent);
 
         } else if (id == R.id.birthday_card) {

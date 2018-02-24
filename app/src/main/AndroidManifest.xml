@@ -65,9 +65,19 @@
             android:label="Music Player"
             android:parentActivityName=".MainActivity"/>
         <activity
-            android:name=".LockerActivity"
-            android:label="Restaurant Details"
-            android:parentActivityName=".activity_restaurant.RestaurantActivity"
+            android:name=".activity_lock.LockerActivity"
+            android:label="Digital Locker"
+            android:parentActivityName=".MainActivity"
+            android:screenOrientation="portrait"/>
+        <activity
+            android:name=".activity_lock.UnlockActivity"
+            android:label="Access Granted!"
+            android:parentActivityName=".activity_lock.LockerActivity"
+            android:screenOrientation="portrait"/>
+        <activity
+            android:name=".activity_lock.AddKey"
+            android:label="Add Key Combination"
+            android:parentActivityName=".activity_lock.LockerActivity"
             android:screenOrientation="portrait"/>
     </application>
 

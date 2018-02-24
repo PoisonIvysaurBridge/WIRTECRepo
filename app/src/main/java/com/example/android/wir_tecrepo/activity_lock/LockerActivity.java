@@ -1,4 +1,4 @@
-package com.example.android.wir_tecrepo;
+package com.example.android.wir_tecrepo.activity_lock;
 
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
@@ -9,11 +9,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
-import com.example.android.wir_tecrepo.AddKey;
-import com.example.android.wir_tecrepo.LockerAdapter;
-import com.example.android.wir_tecrepo.LockerDataModel;
 import com.example.android.wir_tecrepo.R;
-import com.example.android.wir_tecrepo.UnlockActivity;
 
 import java.util.ArrayList;
 import java.util.Random;
