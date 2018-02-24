@@ -16,6 +16,10 @@
             android:id="@+id/restaurant_activity"
             android:icon="@drawable/ic_restaurant_black_24dp"
             android:title="Restaurant Randomizer" />
+        <item
+            android:id="@+id/music_player_activity"
+            android:icon="@drawable/ic_library_music_black_24dp"
+            android:title="Music Player" />
         <!--
         <item
             android:id="@+id/nav_camera"
