@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content">
+	
+	<!-- THIS REPRESENTS A SINGLE LOCKER NUMBER IN A RECYCLER VIEW -->
+    <TextView
+        android:id="@+id/locker_key_view"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="#000000"
+        android:fontFamily="serif-monospace"
+        android:paddingLeft="10dp"
+        android:paddingRight="10dp"
+        android:text="Number here"
+        android:textAllCaps="false"
+        android:textColor="#FFFFFF"
+        android:textSize="48sp"
+        android:textStyle="bold" />
+</LinearLayout>
