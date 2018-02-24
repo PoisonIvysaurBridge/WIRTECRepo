@@ -108,7 +108,6 @@ public class AddRestaurant extends AppCompatActivity {
         bundle.putDouble(WEIGHT_KEY, Double.parseDouble(editWeight.getText().toString()));
         bundle.putInt(EDIT_MODEL_INDEX_KEY, position);
 
-
         intent.putExtras(bundle);
         setResult(RESULT_OK, intent);
     }
