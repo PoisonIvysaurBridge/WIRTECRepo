@@ -164,6 +164,7 @@ public class RestaurantActivity extends AppCompatActivity implements RecyclerIte
                 else{
                     Snackbar snackbar = Snackbar.make(view, "LET'S EAT AT... " + chosenOne.getmRestaurantName() + "!!!", Snackbar.LENGTH_LONG);
                     snackbar.setAction("Action", null).show();
+
                     TextView snackbarActionTextView =  snackbar.getView().findViewById( android.support.design.R.id.snackbar_text );
                     snackbarActionTextView.setTextSize( 30 );
                     snackbarActionTextView.setTypeface(snackbarActionTextView.getTypeface(), Typeface.BOLD);
