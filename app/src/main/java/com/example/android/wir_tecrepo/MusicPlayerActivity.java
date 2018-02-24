@@ -78,13 +78,13 @@ public class MusicPlayerActivity extends AppCompatActivity implements IPlaySongL
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.music_player_menu, menu);
+        getMenuInflater().inflate(R.menu.music_menu, menu);
         return true;
     }
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        if(item.getItemId() == R.id.item_stop) {
+        if(item.getItemId() == R.id.action_end) {
             this.finish();
         }
         return super.onOptionsItemSelected(item);
