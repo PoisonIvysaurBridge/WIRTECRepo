@@ -60,11 +60,15 @@
             android:label="Restaurant Details"
             android:parentActivityName=".activity_restaurant.RestaurantActivity"
             android:screenOrientation="portrait"/>
-
         <activity
             android:name=".MusicPlayerActivity"
             android:label="Music Player"
             android:parentActivityName=".MainActivity"/>
+        <activity
+            android:name=".LockerActivity"
+            android:label="Restaurant Details"
+            android:parentActivityName=".activity_restaurant.RestaurantActivity"
+            android:screenOrientation="portrait"/>
     </application>
 
 </manifest>

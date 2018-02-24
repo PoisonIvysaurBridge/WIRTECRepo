@@ -22,7 +22,7 @@
             android:title="Music Player" />
         <item
             android:id="@+id/lock_activity"
-            android:icon="@drawable/ic_menu_lock"
+            android:icon="@drawable/ic_library_music_black_24dp"
             android:title="Lock Activity (AC#1)" />
         <!--
         <item

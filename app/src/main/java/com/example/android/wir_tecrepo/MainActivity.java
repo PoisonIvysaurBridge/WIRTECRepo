@@ -121,6 +121,10 @@ public class MainActivity extends AppCompatActivity
             Intent intent = new Intent(MainActivity.this, MusicPlayerActivity.class);
             startActivity(intent);
 
+        } else if (id == R.id.lock_activity) {
+            Intent intent = new Intent(MainActivity.this, MusicPlayerActivity.class);
+            startActivity(intent);
+
         } else if (id == R.id.birthday_card) {
             Intent intent = new Intent(MainActivity.this, HappyBirthdayCard.class);
             startActivity(intent);
