@@ -1,6 +1,7 @@
 package com.example.android.wir_tecrepo.activity_lock;
 
 import android.content.Intent;
+import android.graphics.Color;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
@@ -85,6 +86,7 @@ public class LockerActivity extends AppCompatActivity {
          */
         Button addBtn = this.findViewById(R.id.add_btn);
         addBtn.setEnabled(false);
+        addBtn.setBackgroundColor(Color.GRAY);
         addBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -142,6 +144,7 @@ public class LockerActivity extends AppCompatActivity {
             isVerified = true;
             Button addBtn = this.findViewById(R.id.add_btn);
             addBtn.setEnabled(true);
+            addBtn.setBackgroundColor(getResources().getColor(R.color.colorAccent));
             combinationView.setText("ACCESS GRANTED!");
             Intent unlockIntent = new Intent(LockerActivity.this, UnlockActivity.class);
             this.startActivity(unlockIntent);
