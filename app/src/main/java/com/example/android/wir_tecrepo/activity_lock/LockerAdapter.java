@@ -39,6 +39,8 @@ public class LockerAdapter extends RecyclerView.Adapter<LockerAdapter.LockerView
 
     @Override
     public int getItemCount() {
+        // for circular
+        // return Integer.MAX_VALUE;
         return this.modelList.size();
     }
 

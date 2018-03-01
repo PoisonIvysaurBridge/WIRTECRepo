@@ -1,4 +1,4 @@
-package com.example.android.wir_tecrepo;
+package com.example.android.wir_tecrepo.activity_music_player;
 
 import android.Manifest;
 import android.app.PendingIntent;
@@ -24,6 +24,8 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.TextView;
+
+import com.example.android.wir_tecrepo.R;
 
 import java.util.ArrayList;
 

@@ -16,6 +16,7 @@ import android.view.MenuItem;
 import android.widget.TextView;
 
 import com.example.android.wir_tecrepo.activity_lock.LockerActivity;
+import com.example.android.wir_tecrepo.activity_music_player.MusicPlayerActivity;
 import com.example.android.wir_tecrepo.activity_restaurant.RestaurantActivity;
 import com.example.android.wir_tecrepo.miscellaneous.ChopinTime;
 import com.example.android.wir_tecrepo.miscellaneous.CookieActivity;

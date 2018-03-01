@@ -78,6 +78,8 @@ public class LockerActivity extends AppCompatActivity {
         locks.add(new LockerDataModel(9));
         locks.add(new LockerDataModel(9));
 
+        // for circular
+        // layoutManager.scrollToPosition(Integer.MAX_VALUE/2-3);
     }
 
     private void setupButtons() {
@@ -99,9 +101,9 @@ public class LockerActivity extends AppCompatActivity {
         shuffleBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                mRecyclerView1.smoothScrollToPosition(new Random().nextInt(locks.size()));
-                mRecyclerView2.smoothScrollToPosition(new Random().nextInt(locks.size()));
-                mRecyclerView3.smoothScrollToPosition(new Random().nextInt(locks.size()));
+                mRecyclerView1.smoothScrollToPosition(new Random().nextInt(locks.size() % 9));
+                mRecyclerView2.smoothScrollToPosition(new Random().nextInt(locks.size() % 9));
+                mRecyclerView3.smoothScrollToPosition(new Random().nextInt(locks.size() % 9));
 
                 int randomNum = new Random().nextInt(locks.size());
             }
