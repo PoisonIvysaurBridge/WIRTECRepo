@@ -41,6 +41,12 @@ public class SongAdapter extends RecyclerView.Adapter<SongAdapter.MyViewHolder>{
         return playList.size();
     }
 
+
+
+
+
+    // View Holder helper class
+
     public class MyViewHolder extends RecyclerView.ViewHolder {
         public TextView songTxtView;
         public TextView artistTxtView;
