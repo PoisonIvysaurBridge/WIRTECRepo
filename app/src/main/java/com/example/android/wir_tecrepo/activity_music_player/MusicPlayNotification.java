@@ -11,6 +11,8 @@ import android.graphics.BitmapFactory;
 import android.os.Build;
 import android.support.v4.app.NotificationCompat;
 
+import com.example.android.wir_tecrepo.R;
+
 /**
  * Helper class for showing and canceling music play
  * notifications.
