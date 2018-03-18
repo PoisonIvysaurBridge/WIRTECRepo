@@ -18,6 +18,5 @@ public class MusicController extends MediaController {
         if(this.forCleaning) {
             super.hide();
         }
-
     }
 }
