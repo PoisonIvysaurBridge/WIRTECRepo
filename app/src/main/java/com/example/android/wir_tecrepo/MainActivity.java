@@ -36,7 +36,7 @@ import com.example.android.wir_tecrepo.miscellaneous.JustJava;
 
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
-    private final static int PERMISSION_READ_EXTERNAL_STORAGE = 1;
+    private final static int PERMISSION_READ_EXTERNAL_STORAGE = 0;
     SharedPreferences prefs;
     private static final String MUSIC_FIRST_TIME_KEY = "MUSIC_FIRST_TIME_KEY";
 
