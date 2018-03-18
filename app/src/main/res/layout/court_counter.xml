@@ -47,21 +47,24 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="24dp"
                 android:onClick="addThreeForTeamA"
-                android:text="+3 Points" />
+                android:text="+3 Points"
+                android:textColor="@android:color/white" />
 
             <Button
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"
                 android:onClick="addTwoForTeamA"
-                android:text="+2 Points" />
+                android:text="+2 Points"
+                android:textColor="@android:color/white" />
 
             <Button
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"
                 android:onClick="addOneForTeamA"
-                android:text="Free Throws" />
+                android:text="Free Throws"
+                android:textColor="@android:color/white" />
         </LinearLayout>
 
         <View
@@ -105,21 +108,24 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="24dp"
                 android:onClick="addThreeForTeamB"
-                android:text="+3 Points" />
+                android:text="+3 Points"
+                android:textColor="@android:color/white" />
 
             <Button
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"
                 android:onClick="addTwoForTeamB"
-                android:text="+2 Points" />
+                android:text="+2 Points"
+                android:textColor="@android:color/white" />
 
             <Button
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"
                 android:onClick="addOneForTeamB"
-                android:text="Free Throws" />
+                android:text="Free Throws"
+                android:textColor="@android:color/white" />
         </LinearLayout>
 
 
@@ -132,5 +138,6 @@
         android:layout_centerHorizontal="true"
         android:layout_marginBottom="32dp"
         android:onClick="resetScores"
-        android:text="Reset" />
+        android:text="Reset"
+        android:textColor="@android:color/white" />
 </RelativeLayout>
