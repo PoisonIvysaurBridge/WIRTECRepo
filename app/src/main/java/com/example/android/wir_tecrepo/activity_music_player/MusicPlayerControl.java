@@ -2,10 +2,6 @@ package com.example.android.wir_tecrepo.activity_music_player;
 
 import android.widget.MediaController;
 
-/**
- * Handles the music playback control
- * Created by NeilDG on 2/17/2018.
- */
 
 public class MusicPlayerControl implements MediaController.MediaPlayerControl {
 
