@@ -101,9 +101,9 @@ public class LockerActivity extends AppCompatActivity {
         shuffleBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                mRecyclerView1.smoothScrollToPosition(new Random().nextInt(locks.size() % 9));
-                mRecyclerView2.smoothScrollToPosition(new Random().nextInt(locks.size() % 9));
-                mRecyclerView3.smoothScrollToPosition(new Random().nextInt(locks.size() % 9));
+                mRecyclerView1.smoothScrollToPosition(new Random().nextInt(locks.size()));
+                mRecyclerView2.smoothScrollToPosition(new Random().nextInt(locks.size()));
+                mRecyclerView3.smoothScrollToPosition(new Random().nextInt(locks.size()));
 
                 int randomNum = new Random().nextInt(locks.size());
             }
