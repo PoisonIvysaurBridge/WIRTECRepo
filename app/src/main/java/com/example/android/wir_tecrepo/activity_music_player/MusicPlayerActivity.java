@@ -66,15 +66,17 @@ public class MusicPlayerActivity extends AppCompatActivity implements IPlaySongL
         this.unbindService(this.musicConnection); //IMPORTANT! DO NOT FORGET
 
         //IMPORTANT FOR RESETTING THE MUSIC PLAYER CONTROL
-        this.musicController.markForCleaning(true);
-        this.musicController.hide();
-        this.musicService.stopForeground(true);
-        this.musicService = null;
-        this.musicController = null;
-        this.musicPlayerControl = null;
-        Log.d(TAG, "Music service successfully stopped!");
-        super.onDestroy();
+        if(musicController!= null){
+            this.musicController.markForCleaning(true);
+            this.musicController.hide();
+            this.musicService.stopForeground(true);
+            this.musicService = null;
+            this.musicController = null;
+            this.musicPlayerControl = null;
+            Log.d(TAG, "Music service successfully stopped!");
 
+        }
+        super.onDestroy();
     }
 
     @Override
@@ -226,8 +228,14 @@ public class MusicPlayerActivity extends AppCompatActivity implements IPlaySongL
 
     }
 
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+    }
+
     private void setupMusicController() {
         //setup the music controller
+
         if(this.musicPlayerControl != null) {
             this.musicController.markForCleaning(true);
             this.musicController.hide();
