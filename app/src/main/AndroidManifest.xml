@@ -26,59 +26,66 @@
         <activity
             android:name=".miscellaneous.HappyBirthdayCard"
             android:label="Birthday Card"
-            android:parentActivityName=".MainActivity"/>
+            android:parentActivityName=".MainActivity" />
         <activity
             android:name=".miscellaneous.CookieActivity"
             android:label="Eat Cookie"
-            android:parentActivityName=".MainActivity"/>
+            android:parentActivityName=".MainActivity" />
         <activity
             android:name=".miscellaneous.CourtCounter"
             android:label="Court Counter"
-            android:parentActivityName=".MainActivity"/>
+            android:parentActivityName=".MainActivity" />
         <activity
             android:name=".miscellaneous.JustJava"
             android:label="Just Java"
-            android:parentActivityName=".MainActivity"/>
+            android:parentActivityName=".MainActivity" />
         <activity
             android:name=".miscellaneous.ChopinTime"
             android:label="Chopin Time"
-            android:parentActivityName=".MainActivity"/>
+            android:parentActivityName=".MainActivity" />
         <activity
             android:name=".FirstActivity"
             android:label="First Activity"
-            android:parentActivityName=".MainActivity"/>
+            android:parentActivityName=".MainActivity" />
         <activity
             android:name=".LifecycleActivity"
             android:label="Lifecycles"
-            android:parentActivityName=".MainActivity"/>
+            android:parentActivityName=".MainActivity" />
         <activity
             android:name=".activity_restaurant.RestaurantActivity"
             android:label="Restaurant Randomizer"
-            android:parentActivityName=".MainActivity"/>
+            android:parentActivityName=".MainActivity" />
         <activity
             android:name=".activity_restaurant.AddRestaurant"
             android:label="Restaurant Details"
             android:parentActivityName=".activity_restaurant.RestaurantActivity"
-            android:screenOrientation="portrait"/>
+            android:screenOrientation="portrait" />
         <activity
             android:name=".activity_music_player.MusicPlayerActivity"
             android:label="Music Player"
-            android:parentActivityName=".MainActivity"/>
+            android:parentActivityName=".MainActivity" />
+        <activity
+            android:name=".MusicPlayer2Activity"
+            android:label="Music Player 2.0"
+            android:launchMode="singleTop"
+            android:parentActivityName=".MainActivity"
+            android:screenOrientation="portrait" />
         <activity
             android:name=".activity_lock.LockerActivity"
             android:label="Digital Locker"
             android:parentActivityName=".MainActivity"
-            android:screenOrientation="portrait"/>
+            android:screenOrientation="portrait" />
         <activity
             android:name=".activity_lock.UnlockActivity"
             android:label="Access Granted!"
             android:parentActivityName=".activity_lock.LockerActivity"
-            android:screenOrientation="portrait"/>
+            android:screenOrientation="portrait" />
         <activity
             android:name=".activity_lock.AddKey"
             android:label="Add Key Combination"
             android:parentActivityName=".activity_lock.LockerActivity"
-            android:screenOrientation="portrait"/>
+            android:screenOrientation="portrait" />
+
         <service
             android:name=".activity_music_player.MusicService"
             android:enabled="true"

@@ -13,6 +13,7 @@ import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.ContextCompat;
+import android.util.Log;
 import android.view.View;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
@@ -136,27 +137,33 @@ public class MainActivity extends AppCompatActivity
             startActivity(intent);
 
         } else if (id == R.id.music_player_activity) {
-            if(ContextCompat.checkSelfPermission(this, Manifest.permission.READ_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED){
 
+            // check dangerous permissions at runtime for Android 6.0 & up
+            if(ContextCompat.checkSelfPermission(this, Manifest.permission.READ_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED){
                 String[] permissions = new String[]{Manifest.permission.READ_EXTERNAL_STORAGE};
                 if(ActivityCompat.shouldShowRequestPermissionRationale(this, permissions[PERMISSION_READ_EXTERNAL_STORAGE])){
                     Toast.makeText(this, "Permission is required to access media stored on your device", Toast.LENGTH_SHORT).show();
-                    this.requestPermissions(permissions, PERMISSION_READ_EXTERNAL_STORAGE);
-                }else {
+                    //this.requestPermissions(permissions, PERMISSION_READ_EXTERNAL_STORAGE);
+                }
+                /*else {
                     if(prefs.getBoolean(MUSIC_FIRST_TIME_KEY, true)){
                         prefs.edit().putBoolean(MUSIC_FIRST_TIME_KEY, false).apply();
                         Toast.makeText(this, "Music Player launched for the first time!", Toast.LENGTH_SHORT).show();
                         this.requestPermissions(permissions, PERMISSION_READ_EXTERNAL_STORAGE);
                     }
-                    else {
+                    else {  // when the user clicks on the "Never Ask Again" checkbox
                         Toast.makeText(this, "Permission is disabled for this application!", Toast.LENGTH_SHORT).show();
                     }
-                }
+                }*/
+                this.requestPermissions(permissions, PERMISSION_READ_EXTERNAL_STORAGE);
             }else {
                 Toast.makeText(this, "Permission is already granted.", Toast.LENGTH_SHORT).show();
                 Intent intent = new Intent(MainActivity.this, MusicPlayerActivity.class);
                 startActivity(intent);
             }
+
+        } else if(id == R.id.music_player_activity_2){
+
 
         } else if (id == R.id.lock_activity) {
             Intent intent = new Intent(MainActivity.this, LockerActivity.class);
@@ -191,5 +198,14 @@ public class MainActivity extends AppCompatActivity
     @Override
     public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
         super.onRequestPermissionsResult(requestCode, permissions, grantResults);
+        if(requestCode == PERMISSION_READ_EXTERNAL_STORAGE) {
+            if (grantResults.length > 0
+                    && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+
+                Intent intent = new Intent(MainActivity.this, MusicPlayerActivity.class);
+                startActivity(intent);
+
+            }
+        }
     }
 }

@@ -28,6 +28,7 @@ import android.widget.TextView;
 import com.example.android.wir_tecrepo.R;
 
 import java.util.ArrayList;
+import java.util.Collections;
 
 public class MusicPlayerActivity extends AppCompatActivity implements IPlaySongListener{
     private final static String TAG = "MusicPlayerActivity";
@@ -90,6 +91,20 @@ public class MusicPlayerActivity extends AppCompatActivity implements IPlaySongL
     public boolean onOptionsItemSelected(MenuItem item) {
         if(item.getItemId() == R.id.action_end) {
             this.finish();
+        }
+        else if(item.getItemId() == R.id.action_shuffle){
+            Collections.shuffle(songList);
+            //songAdapter.notifyDataSetChanged();
+            if(this.musicService != null) {
+                this.musicService.setSong(0);
+                this.musicService.playSong();
+                this.setupMusicController();
+
+                this.startForegroundNotif(0);
+            }
+            else {
+                Log.e(TAG, "Music service is not properly setup!");
+            }
         }
         return super.onOptionsItemSelected(item);
     }

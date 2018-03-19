@@ -152,6 +152,9 @@ public class LockerActivity extends AppCompatActivity {
         }
         else {
             combinationView.setText("Combination " +combination+ " is invalid! ACCESS DENIED!");
+            Button addBtn = this.findViewById(R.id.add_btn);
+            addBtn.setEnabled(false);
+            addBtn.setBackgroundColor(Color.GRAY);
         }
     }
 
