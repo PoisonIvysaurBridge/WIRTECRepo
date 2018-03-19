@@ -20,10 +20,10 @@
             android:id="@+id/music_player_activity"
             android:icon="@drawable/ic_library_music_black_24dp"
             android:title="Music Player" />
-        <item
+        <!--<item
             android:id="@+id/music_player_activity_2"
             android:icon="@drawable/ic_library_music_black_24dp"
-            android:title="Music Player 2.0" />
+            android:title="Music Player 2.0" />-->
         <item
             android:id="@+id/lock_activity"
             android:icon="@drawable/ic_lock_black_24dp"

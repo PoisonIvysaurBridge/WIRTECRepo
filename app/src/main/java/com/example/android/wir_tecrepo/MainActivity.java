@@ -162,10 +162,11 @@ public class MainActivity extends AppCompatActivity
                 startActivity(intent);
             }
 
-        } else if(id == R.id.music_player_activity_2){
+        } /*else if(id == R.id.music_player_activity_2){
+            Intent intent = new Intent(MainActivity.this, MusicPlayer2Activity.class);
+            startActivity(intent);
 
-
-        } else if (id == R.id.lock_activity) {
+        }*/ else if (id == R.id.lock_activity) {
             Intent intent = new Intent(MainActivity.this, LockerActivity.class);
             startActivity(intent);
 

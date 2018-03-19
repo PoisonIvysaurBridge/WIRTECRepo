@@ -90,6 +90,10 @@
             android:name=".activity_music_player.MusicService"
             android:enabled="true"
             android:exported="false" />
+        <service
+            android:name=".MusicPlayerService"
+            android:enabled="true"
+            android:exported="false" />
     </application>
 
 </manifest>
