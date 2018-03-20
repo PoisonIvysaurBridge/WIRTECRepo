@@ -125,8 +125,7 @@ public class MusicService extends Service implements MediaPlayer.OnPreparedListe
         this.currentSongIndex = 0;
         this.mediaPlayer = new MediaPlayer();
 
-        this.mediaPlayer.setWakeMode(getApplicationContext(),
-                PowerManager.PARTIAL_WAKE_LOCK);
+        this.mediaPlayer.setWakeMode(getApplicationContext(), PowerManager.PARTIAL_WAKE_LOCK);
         this.mediaPlayer.setAudioStreamType(AudioManager.STREAM_MUSIC);
         this.mediaPlayer.setOnPreparedListener(this);
         this.mediaPlayer.setOnCompletionListener(this);

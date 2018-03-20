@@ -24,6 +24,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.android.wir_tecrepo.R;
 
@@ -217,7 +218,7 @@ public class MusicPlayerActivity extends AppCompatActivity implements IPlaySongL
         if(this.playIntent==null){
             this.playIntent = new Intent(this, MusicService.class);
             this.bindService(this.playIntent, this.musicConnection, Context.BIND_AUTO_CREATE);
-            this.startService(this.playIntent);
+            //this.startService(this.playIntent);
 
             Log.d(TAG, "Successfully setup service!");
         }
@@ -245,6 +246,7 @@ public class MusicPlayerActivity extends AppCompatActivity implements IPlaySongL
 
     @Override
     public void onBackPressed() {
+        Toast.makeText(this, "BACK PRESSED!",Toast.LENGTH_SHORT).show();
         super.onBackPressed();
     }
 
