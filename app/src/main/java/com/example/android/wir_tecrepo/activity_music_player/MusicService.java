@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.media.AudioManager;
 import android.media.MediaPlayer;
 import android.net.Uri;
+import android.os.Binder;
 import android.os.IBinder;
 import android.os.PowerManager;
 
@@ -162,5 +163,12 @@ public class MusicService extends Service implements MediaPlayer.OnPreparedListe
         return false;
     }
 
+
+    public class MusicBinder extends Binder {
+
+        public MusicService getService() {
+            return MusicService.this;
+        }
+    }
 
 }
