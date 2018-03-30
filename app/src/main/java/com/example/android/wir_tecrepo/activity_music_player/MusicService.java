@@ -28,6 +28,10 @@ public class MusicService extends Service implements MediaPlayer.OnPreparedListe
         this.songListener = songListener;
     }
 
+    public void setSong(int index) {
+        this.currentSongIndex = index;
+    }
+
     public void playSong() {
         this.mediaPlayer.reset();
         Song song = this.playlist.get(this.currentSongIndex);
@@ -68,10 +72,6 @@ public class MusicService extends Service implements MediaPlayer.OnPreparedListe
         }
 
         this.playSong();
-    }
-
-    public void setSong(int index) {
-        this.currentSongIndex = index;
     }
 
     public boolean isPlaying() {
