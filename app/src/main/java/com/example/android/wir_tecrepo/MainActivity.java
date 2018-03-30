@@ -145,7 +145,7 @@ public class MainActivity extends AppCompatActivity
                     Toast.makeText(this, "Permission is required to access media stored on your device", Toast.LENGTH_SHORT).show();
                     //this.requestPermissions(permissions, PERMISSION_READ_EXTERNAL_STORAGE);
                 }
-                /*else {
+                else {
                     if(prefs.getBoolean(MUSIC_FIRST_TIME_KEY, true)){
                         prefs.edit().putBoolean(MUSIC_FIRST_TIME_KEY, false).apply();
                         Toast.makeText(this, "Music Player launched for the first time!", Toast.LENGTH_SHORT).show();
@@ -154,8 +154,8 @@ public class MainActivity extends AppCompatActivity
                     else {  // when the user clicks on the "Never Ask Again" checkbox
                         Toast.makeText(this, "Permission is disabled for this application!", Toast.LENGTH_SHORT).show();
                     }
-                }*/
-                this.requestPermissions(permissions, PERMISSION_READ_EXTERNAL_STORAGE);
+                }
+                //this.requestPermissions(permissions, PERMISSION_READ_EXTERNAL_STORAGE);
             }else {
                 Toast.makeText(this, "Permission is already granted.", Toast.LENGTH_SHORT).show();
                 Intent intent = new Intent(MainActivity.this, MusicPlayerActivity.class);
