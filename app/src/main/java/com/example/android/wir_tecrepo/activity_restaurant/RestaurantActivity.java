@@ -153,7 +153,7 @@ public class RestaurantActivity extends AppCompatActivity implements RecyclerIte
             public void onClick(View view) {
                 // EQUAL RANDOMNESS
                 Collections.shuffle(restaurants);
-                mAdapter.notifyDataSetChanged(); //enable this to view the shuffling animation
+                //mAdapter.notifyDataSetChanged(); //enable this to view the shuffling animation
 
                 // WEIGHTED RANDOMNESS
                 Restaurant chosenOne = doWeightedRandomness();
