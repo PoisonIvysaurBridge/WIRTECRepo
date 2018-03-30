@@ -143,7 +143,7 @@ public class MainActivity extends AppCompatActivity
                 String[] permissions = new String[]{Manifest.permission.READ_EXTERNAL_STORAGE};
                 if(ActivityCompat.shouldShowRequestPermissionRationale(this, permissions[PERMISSION_READ_EXTERNAL_STORAGE])){
                     Toast.makeText(this, "Permission is required to access media stored on your device", Toast.LENGTH_SHORT).show();
-                    //this.requestPermissions(permissions, PERMISSION_READ_EXTERNAL_STORAGE);
+                    this.requestPermissions(permissions, PERMISSION_READ_EXTERNAL_STORAGE);
                 }
                 else {
                     if(prefs.getBoolean(MUSIC_FIRST_TIME_KEY, true)){
