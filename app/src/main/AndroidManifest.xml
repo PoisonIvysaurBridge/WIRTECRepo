@@ -87,6 +87,7 @@
 
         <service
             android:name=".activity_music_player.MusicService"
+            android:description="@string/app_name"
             android:exported="false" />
         <service
             android:name=".MusicPlayerService"
