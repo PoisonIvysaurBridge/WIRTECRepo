@@ -58,7 +58,11 @@ public class MusicPlayerActivity extends AppCompatActivity implements IPlaySongL
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_music_player);
 
+        // requesting of permissions can be done in the onCreate as well
         this.requestPermissions();
+        // but for this app, the requesting of permisisons is in the Main activity when
+        // the user clicks on the music player menu option in the navigation menu
+        
         this.setupMusicService();
         this.startMusicService();
     }
