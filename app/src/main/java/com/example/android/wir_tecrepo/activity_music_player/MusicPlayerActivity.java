@@ -30,6 +30,7 @@ import com.example.android.wir_tecrepo.R;
 
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.Random;
 
 public class MusicPlayerActivity extends AppCompatActivity implements IPlaySongListener{
     private final static String TAG = "MusicPlayerActivity";
@@ -94,10 +95,10 @@ public class MusicPlayerActivity extends AppCompatActivity implements IPlaySongL
             this.finish();
         }
         else if(item.getItemId() == R.id.action_shuffle){
-            Collections.shuffle(songList);
+            //Collections.shuffle(songList);
             //songAdapter.notifyDataSetChanged();
             if(this.musicService != null) {
-                this.musicService.setSong(0);
+                this.musicService.setSong(new Random().nextInt(songList.size()));
                 this.musicService.playSong();
                 this.setupMusicController();
 
@@ -187,14 +188,24 @@ public class MusicPlayerActivity extends AppCompatActivity implements IPlaySongL
         Song song = this.songList.get(songIndex);
         String songName = song.getSongName();
         String songArtist = song.getArtist();
+        // TODO notification channel
+        /*
         Intent notIntent = new Intent(this, MusicPlayerActivity.class);
         notIntent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
         PendingIntent pendInt = PendingIntent.getActivity(this, 0,
                 notIntent, PendingIntent.FLAG_UPDATE_CURRENT);
-
+            */
         MusicPlayNotification playNotification = new MusicPlayNotification();
 
-        this.musicService.startForeground(MUSIC_PLAY_NOTIFY_ID, playNotification.buildNotification(this, songName, songArtist, pendInt));
+        ///* code of Ms.
+        Intent mainIntent = new Intent(this.musicService, MusicService.class);
+        mainIntent.setFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP);
+
+        PendingIntent pendInt = PendingIntent.getActivity(this.musicService, 0,
+                mainIntent, PendingIntent.FLAG_UPDATE_CURRENT);
+
+        this.musicService.startForeground(MUSIC_PLAY_NOTIFY_ID, playNotification.buildNotification(
+                this, songName, songArtist, pendInt));
     }
 
     private void setupMusicService() {
