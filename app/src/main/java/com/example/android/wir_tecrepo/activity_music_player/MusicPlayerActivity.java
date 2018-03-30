@@ -143,7 +143,7 @@ public class MusicPlayerActivity extends AppCompatActivity implements IPlaySongL
             this.musicService.playSong();
             this.setupMusicController();
 
-            this.startForegroundNotif(songIndex);
+            //this.startForegroundNotif(songIndex);
         }
         else {
             Log.e(TAG, "Music service is not properly setup!");
