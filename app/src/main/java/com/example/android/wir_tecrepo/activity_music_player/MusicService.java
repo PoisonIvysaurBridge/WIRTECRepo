@@ -132,7 +132,8 @@ public class MusicService extends Service implements MediaPlayer.OnPreparedListe
         this.mediaPlayer.setOnCompletionListener(this);
         this.mediaPlayer.setOnErrorListener(this);
 
-        this.musicBinder = new MusicBinder(this);
+        //this.musicBinder = new MusicBinder(this);
+        this.musicBinder = new MusicBinder();
     }
 
     @Override
