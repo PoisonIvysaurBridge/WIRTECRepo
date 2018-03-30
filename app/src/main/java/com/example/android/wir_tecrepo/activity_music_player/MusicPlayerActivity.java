@@ -155,6 +155,7 @@ public class MusicPlayerActivity extends AppCompatActivity implements IPlaySongL
         Song song = this.songList.get(songIndex);
         this.titleView.setText(song.getSongName());
         this.artistView.setText(song.getArtist());
+        this.startForegroundNotif(songIndex);
     }
 
     private void requestPermissions() {
