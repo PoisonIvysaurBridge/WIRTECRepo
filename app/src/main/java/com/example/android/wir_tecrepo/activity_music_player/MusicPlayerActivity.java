@@ -217,7 +217,7 @@ public class MusicPlayerActivity extends AppCompatActivity implements IPlaySongL
         this.musicConnection = new ServiceConnection() {
             @Override
             public void onServiceConnected(ComponentName name, IBinder service) {
-                MusicBinder binder = (MusicBinder) service;
+                MusicService.MusicBinder binder = (MusicService.MusicBinder) service;
 
                 MusicPlayerActivity.this.musicService = binder.getService();
                 MusicPlayerActivity.this.musicService.setPlaylist(MusicPlayerActivity.this.songList, MusicPlayerActivity.this);
