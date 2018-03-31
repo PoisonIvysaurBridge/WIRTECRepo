@@ -8,6 +8,8 @@ public class MusicPlayerControl implements MediaController.MediaPlayerControl {
     private MusicPlayerActivity  musicPlayerActivity;
     private MusicService musicService;
 
+    private boolean paused = false, playbackPaused = false;
+
     public MusicPlayerControl(MusicPlayerActivity musicPlayerActivity, MusicService musicService) {
         this.musicPlayerActivity = musicPlayerActivity;
         this.musicService = musicService;
@@ -22,6 +24,8 @@ public class MusicPlayerControl implements MediaController.MediaPlayerControl {
     @Override
     public void pause() {
         if(this.musicService != null) {
+            playbackPaused = true;
+            musicPlayerActivity.setPlaybackPaused(playbackPaused);
             this.musicService.pause();
         }
     }
@@ -86,5 +90,21 @@ public class MusicPlayerControl implements MediaController.MediaPlayerControl {
     @Override
     public int getAudioSessionId() {
         return 0;
+    }
+
+    public boolean isPaused() {
+        return paused;
+    }
+
+    public void setPaused(boolean paused) {
+        this.paused = paused;
+    }
+
+    public boolean isPlaybackPaused() {
+        return playbackPaused;
+    }
+
+    public void setPlaybackPaused(boolean playbackPaused) {
+        this.playbackPaused = playbackPaused;
     }
 }

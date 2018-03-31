@@ -53,6 +53,8 @@ public class MusicPlayerActivity extends AppCompatActivity implements IPlaySongL
     private TextView titleView;
     private TextView artistView;
 
+    private boolean paused = false, playbackPaused = false;
+
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -65,6 +67,36 @@ public class MusicPlayerActivity extends AppCompatActivity implements IPlaySongL
 
         this.setupMusicService();
         this.startMusicService();
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+
+        if(this.paused){
+            setupMusicController();
+            paused = false;
+            if(musicPlayerControl != null) {
+                this.musicPlayerControl.setPaused(this.paused);
+                this.musicPlayerControl.setPlaybackPaused(this.playbackPaused);
+            }
+        }
+    }
+
+    @Override
+    protected void onPause() {
+        this.paused = true;
+        if(musicPlayerControl != null) {
+            this.musicPlayerControl.setPaused(this.paused);
+            this.musicPlayerControl.setPlaybackPaused(this.playbackPaused);
+        }
+        super.onPause();
+    }
+
+    @Override
+    protected void onStop() {
+        this.musicController.hide();
+        super.onStop();
     }
 
     @Override
@@ -141,8 +173,12 @@ public class MusicPlayerActivity extends AppCompatActivity implements IPlaySongL
         if(this.musicService != null) {
             this.musicService.setSong(songIndex);
             this.musicService.playSong();
-            this.setupMusicController();
-
+            if(playbackPaused) {
+                this.setupMusicController();
+                playbackPaused = false;
+                this.musicPlayerControl.setPaused(this.paused);
+                this.musicPlayerControl.setPlaybackPaused(this.playbackPaused);
+            }
             //this.startForegroundNotif(songIndex);
         }
         else {
@@ -281,20 +317,47 @@ public class MusicPlayerActivity extends AppCompatActivity implements IPlaySongL
         this.musicController.setPrevNextListeners(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                musicService.playNext();
-                musicController.show(0);
+               playNext();
             }
         }, new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                musicService.playPrevious();
-                musicController.show(0);
+               playPrevious();
             }
         });
+
+        this.musicPlayerControl.setPaused(this.paused);
+        this.musicPlayerControl.setPlaybackPaused(this.playbackPaused);
 
         this.musicController.setMediaPlayer(this.musicPlayerControl);
         this.musicController.setAnchorView(this.findViewById(R.id.media_control_layout));
         this.musicController.setEnabled(true);
         this.musicController.show(0); //0 means screen will be persistent
+    }
+
+    private void playNext(){
+        musicService.playNext();
+        if(playbackPaused){
+            setupMusicController();
+            playbackPaused = false;
+        }
+        musicController.show(0);
+    }
+
+    private void playPrevious(){
+        musicService.playPrevious();
+        if(playbackPaused){
+            setupMusicController();
+            playbackPaused = false;
+        }
+        musicController.show(0);
+    }
+
+    public void setPaused(boolean paused) {
+        this.paused = paused;
+    }
+
+    public void setPlaybackPaused(boolean playbackPaused) {
+        this.playbackPaused = playbackPaused;
     }
 }
