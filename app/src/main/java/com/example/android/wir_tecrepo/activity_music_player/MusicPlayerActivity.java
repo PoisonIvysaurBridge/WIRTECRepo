@@ -148,27 +148,6 @@ public class MusicPlayerActivity extends AppCompatActivity implements IPlaySongL
     }
 
     @Override
-    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
-        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
-
-        if(requestCode == PERMISSION_READ_EXTERNAL_STORAGE) {
-            if (grantResults.length > 0
-                    && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
-
-                Log.d(TAG, "Permission granted!");
-                // permission was granted, yay!
-                this.loadSongsFromStorage();
-                this.setupUI();
-
-
-            } else {
-                // permission denied, boo!
-                this.finish();
-            }
-        }
-    }
-
-    @Override
     public void onPlayRequested(int songIndex) {
         if(this.musicService != null) {
             this.musicService.setSong(songIndex);
@@ -198,6 +177,27 @@ public class MusicPlayerActivity extends AppCompatActivity implements IPlaySongL
         ActivityCompat.requestPermissions(this,
                 new String[]{Manifest.permission.READ_EXTERNAL_STORAGE},
                 PERMISSION_READ_EXTERNAL_STORAGE);
+    }
+
+    @Override
+    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
+
+        if(requestCode == PERMISSION_READ_EXTERNAL_STORAGE) {
+            if (grantResults.length > 0
+                    && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+
+                Log.d(TAG, "Permission granted!");
+                // permission was granted, yay!
+                this.loadSongsFromStorage();
+                this.setupUI();
+
+
+            } else {
+                // permission denied, boo!
+                this.finish();
+            }
+        }
     }
 
     private void loadSongsFromStorage() {
