@@ -260,7 +260,7 @@ public class MusicPlayerActivity extends AppCompatActivity implements IPlaySongL
 
     }
 
-    @Override
+    @Override   // NOT WORKING
     public void onBackPressed() {
         Toast.makeText(this, "BACK PRESSED!",Toast.LENGTH_SHORT).show();
         super.onBackPressed();
