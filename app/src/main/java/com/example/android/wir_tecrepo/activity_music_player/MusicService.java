@@ -23,6 +23,22 @@ public class MusicService extends Service implements MediaPlayer.OnPreparedListe
 
     private int currentSongIndex = 0;
 
+    @Override
+    public void onCreate() {
+        super.onCreate();
+        this.currentSongIndex = 0;
+        this.mediaPlayer = new MediaPlayer();
+
+        this.mediaPlayer.setWakeMode(getApplicationContext(), PowerManager.PARTIAL_WAKE_LOCK);
+        this.mediaPlayer.setAudioStreamType(AudioManager.STREAM_MUSIC);
+        this.mediaPlayer.setOnPreparedListener(this);
+        this.mediaPlayer.setOnCompletionListener(this);
+        this.mediaPlayer.setOnErrorListener(this);
+
+        //this.musicBinder = new MusicBinder(this);
+        this.musicBinder = new MusicBinder();
+    }
+
     public void setPlaylist(ArrayList<Song> playlist, IPlaySongListener songListener) {
         this.playlist = playlist;
         this.songListener = songListener;
@@ -118,22 +134,6 @@ public class MusicService extends Service implements MediaPlayer.OnPreparedListe
         if(this.mediaPlayer != null) {
             this.mediaPlayer.seekTo(newSec);
         }
-    }
-
-    @Override
-    public void onCreate() {
-        super.onCreate();
-        this.currentSongIndex = 0;
-        this.mediaPlayer = new MediaPlayer();
-
-        this.mediaPlayer.setWakeMode(getApplicationContext(), PowerManager.PARTIAL_WAKE_LOCK);
-        this.mediaPlayer.setAudioStreamType(AudioManager.STREAM_MUSIC);
-        this.mediaPlayer.setOnPreparedListener(this);
-        this.mediaPlayer.setOnCompletionListener(this);
-        this.mediaPlayer.setOnErrorListener(this);
-
-        //this.musicBinder = new MusicBinder(this);
-        this.musicBinder = new MusicBinder();
     }
 
     @Override
