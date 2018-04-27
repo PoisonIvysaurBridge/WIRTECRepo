@@ -78,6 +78,14 @@
             android:label="Add Key Combination"
             android:parentActivityName=".activity_lock.LockerActivity"
             android:screenOrientation="portrait" />
+        <activity android:name=".exam_downloader.DownloaderActivity" />
+        <activity android:name=".exam_downloader.MovieListActivity" />
+        <activity android:name=".exam_downloader.MovieViewActivity" />
+
+        <service
+            android:name=".exam_downloader.services.FakeDownloadService"
+            android:enabled="true"
+            android:exported="true" />
 
         <service
             android:name=".activity_music_player.MusicService"

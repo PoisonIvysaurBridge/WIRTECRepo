@@ -29,6 +29,7 @@ import android.widget.Toast;
 import com.example.android.wir_tecrepo.activity_lock.LockerActivity;
 import com.example.android.wir_tecrepo.activity_music_player.MusicPlayerActivity;
 import com.example.android.wir_tecrepo.activity_restaurant.RestaurantActivity;
+import com.example.android.wir_tecrepo.exam_downloader.DownloaderActivity;
 import com.example.android.wir_tecrepo.miscellaneous.ChopinTime;
 import com.example.android.wir_tecrepo.miscellaneous.CookieActivity;
 import com.example.android.wir_tecrepo.miscellaneous.CourtCounter;
@@ -164,6 +165,10 @@ public class MainActivity extends AppCompatActivity
 
         } else if (id == R.id.lock_activity) {
             Intent intent = new Intent(MainActivity.this, LockerActivity.class);
+            startActivity(intent);
+
+        } else if (id == R.id.fake_downloader_activity) {
+            Intent intent = new Intent(MainActivity.this, DownloaderActivity.class);
             startActivity(intent);
 
         } else if (id == R.id.birthday_card) {
