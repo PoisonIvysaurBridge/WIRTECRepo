@@ -4,7 +4,7 @@
 
     <uses-permission android:name="android.permission.WAKE_LOCK" />
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
-    <uses-permission android:name="android.permission.VIBRATE" /> <!-- <uses-permission android:name="android.permission.VIBRATE" /> -->
+    <uses-permission android:name="android.permission.VIBRATE" />
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -63,12 +63,6 @@
             android:name=".activity_music_player.MusicPlayerActivity"
             android:label="Music Player"
             android:parentActivityName=".MainActivity" />
-        <activity
-            android:name=".MusicPlayer2Activity"
-            android:label="Music Player 2.0"
-            android:launchMode="singleTop"
-            android:parentActivityName=".MainActivity"
-            android:screenOrientation="portrait" />
         <activity
             android:name=".activity_lock.LockerActivity"
             android:label="Digital Locker"

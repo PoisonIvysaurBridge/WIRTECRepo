@@ -20,14 +20,14 @@
             android:id="@+id/music_player_activity"
             android:icon="@drawable/ic_library_music_black_24dp"
             android:title="Music Player" />
-        <!--<item
-            android:id="@+id/music_player_activity_2"
-            android:icon="@drawable/ic_library_music_black_24dp"
-            android:title="Music Player 2.0" />-->
         <item
             android:id="@+id/lock_activity"
             android:icon="@drawable/ic_lock_black_24dp"
             android:title="Lock Activity (AC#1)" />
+        <item
+            android:id="@+id/fake_downloader_activity"
+            android:icon="@drawable/ic_file_download_black_24dp"
+            android:title="Fake Downloader (AC#2)" />
         <!--
         <item
             android:id="@+id/nav_camera"

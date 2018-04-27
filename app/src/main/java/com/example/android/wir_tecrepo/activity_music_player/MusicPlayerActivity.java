@@ -95,7 +95,9 @@ public class MusicPlayerActivity extends AppCompatActivity implements IPlaySongL
 
     @Override
     protected void onStop() {
-        this.musicController.hide();
+        if(this.musicController != null) {
+            this.musicController.hide();
+        }
         super.onStop();
     }
 
@@ -170,6 +172,7 @@ public class MusicPlayerActivity extends AppCompatActivity implements IPlaySongL
         Song song = this.songList.get(songIndex);
         this.titleView.setText(song.getSongName());
         this.artistView.setText(song.getArtist());
+        this.setupMusicController();
         this.startForegroundNotif(songIndex);
     }
 
