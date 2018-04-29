@@ -47,17 +47,16 @@ public class FakeDownloadService extends Service {
         ThreadAction threadAction = new ThreadAction() {
             @Override
             public void onProgress(final int currentProgress) {
-                    activity.runOnUiThread(new Runnable() {
-                        @Override
-                        public void run() {
-                            movieViewHolder.updateProgress(currentProgress);
-                            if(currentProgress >= 100 && finishedListener != null) {
-                                finishedListener.onDownloadFinished(movieModel, FakeDownloadService.this);
-                            }
+                activity.runOnUiThread(new Runnable() {
+                    @Override
+                    public void run() {
+                        movieViewHolder.updateProgress(currentProgress);
+                        if(currentProgress >= 100 && finishedListener != null) {
+                            finishedListener.onDownloadFinished(movieModel, FakeDownloadService.this);
                         }
-                    });
-
-                }
+                    }
+                });
+            }
         };
 
         movieViewHolder.initializeBar(0, 100);

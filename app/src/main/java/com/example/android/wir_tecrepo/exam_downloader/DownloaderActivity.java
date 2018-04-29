@@ -14,6 +14,7 @@ import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.Toast;
 
 
 import com.example.android.wir_tecrepo.R;
@@ -131,6 +132,7 @@ public class DownloaderActivity extends AppCompatActivity implements MovieDownlo
 
     private void handleDownloads() {
         final MovieModel movieModel = MovieRepository.getInstance().getLatestDownloadableMovie();
+        //Toast.makeText(this,"in handle downloads", Toast.LENGTH_SHORT).show();
         if(movieModel != null) {
             //start a new download service
             ServiceConnection downloadConnection = new ServiceConnection() {
